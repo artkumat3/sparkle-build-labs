@@ -6,9 +6,9 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-accent/10" />
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/10" />
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-accent/20 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -54,7 +54,7 @@ const Hero = () => {
             {/* Quick Stats */}
             <div className="flex gap-8 pt-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
                   <Code className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -63,7 +63,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
                   <Bot className="w-5 h-5 text-accent" />
                 </div>
                 <div>
