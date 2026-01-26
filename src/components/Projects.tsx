@@ -1,55 +1,40 @@
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Bot, Shield, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filters = ["All", "Design", "Development", "Branding", "UI/UX"];
+  const filters = ["All", "AI", "Web Development", "Automation"];
 
   const projects = [
     {
       id: 1,
-      title: "Brand Identity - TechFlow",
-      category: "Branding",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop",
-      client: "TechFlow Inc.",
+      title: "UnMask — Coaching Ad Transparency",
+      category: "AI",
+      description: "A public-interest platform that audits coaching institute advertisements for misleading claims. AI extracts topper data, detects conflicts, and compiles evidence for Consumer Protection complaints.",
+      icon: Shield,
+      tags: ["AI", "Product Design", "OCR"],
+      date: "Jan 2026",
     },
     {
       id: 2,
-      title: "E-commerce Platform",
-      category: "Development",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-      client: "ShopEase",
+      title: "BrainX — AI Test Generator",
+      category: "AI",
+      description: "An AI-powered test platform trusted by Class 10 toppers, offering 100% CBSE-aligned questions and smart analytics for students.",
+      icon: Bot,
+      tags: ["AI", "EdTech", "Web App"],
+      date: "2025",
     },
     {
       id: 3,
-      title: "Mobile App Design",
-      category: "UI/UX",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
-      client: "FitLife App",
-    },
-    {
-      id: 4,
-      title: "Corporate Website",
-      category: "Design",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop",
-      client: "ConsultPro",
-    },
-    {
-      id: 5,
-      title: "Dashboard Design",
-      category: "UI/UX",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      client: "DataViz",
-    },
-    {
-      id: 6,
-      title: "Creative Campaign",
-      category: "Branding",
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop",
-      client: "ArtHouse",
+      title: "Business Automation Suite",
+      category: "Automation",
+      description: "Automated workflow solutions for businesses to save time and increase efficiency using AI-powered tools and integrations.",
+      icon: Sparkles,
+      tags: ["Automation", "AI", "Integration"],
+      date: "2025",
     },
   ];
 
@@ -65,7 +50,7 @@ const Projects = () => {
           <span className="text-primary text-sm font-medium uppercase tracking-wider">Portfolio</span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground">Featured Projects</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my best work across various industries and design disciplines.
+            A showcase of my work in AI automation, web development, and smart solutions.
           </p>
         </div>
 
@@ -78,7 +63,7 @@ const Projects = () => {
               size="sm"
               onClick={() => setActiveFilter(filter)}
               className={activeFilter === filter
-                ? "bg-primary text-primary-foreground"
+                ? "bg-gradient-to-r from-primary to-accent text-primary-foreground"
                 : "border-border hover:border-primary hover:text-primary"
               }
             >
@@ -95,38 +80,44 @@ const Projects = () => {
               className="glass-card border-border/50 overflow-hidden group cursor-pointer hover:border-primary/50 transition-all duration-300"
             >
               <CardContent className="p-0">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <div className="flex items-center gap-2 text-primary">
-                      <ExternalLink className="w-5 h-5" />
-                      <span className="font-medium">View Project</span>
-                    </div>
+                <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-secondary h-48 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <project.icon className="w-10 h-10 text-primary" />
+                  </div>
+                  <div className="absolute top-4 right-4 text-xs text-muted-foreground bg-background/80 px-2 py-1 rounded-full">
+                    {project.date}
                   </div>
                 </div>
-                <div className="p-6 space-y-2">
-                  <span className="text-primary text-xs font-medium uppercase tracking-wider">
-                    {project.category}
-                  </span>
+                <div className="p-6 space-y-3">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm">{project.client}</p>
+                  <p className="text-muted-foreground text-sm line-clamp-3">{project.description}</p>
+                  <div className="flex items-center gap-2 text-primary text-sm font-medium pt-2">
+                    <ExternalLink className="w-4 h-4" />
+                    <span>View Project</span>
+                  </div>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* View All Button */}
+        {/* CTA */}
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg" className="border-border hover:border-primary hover:text-primary">
-            View All Projects
-          </Button>
+          <p className="text-muted-foreground mb-4">Want to see more or discuss a project?</p>
+          <a href="#contact">
+            <Button className="bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90">
+              Let's Talk
+            </Button>
+          </a>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,10 +20,13 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">D</span>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">A</span>
             </div>
-            <span className="text-xl font-bold text-foreground hidden sm:block">DesignStudio</span>
+            <div className="hidden sm:block">
+              <span className="text-xl font-bold text-foreground">Aryan</span>
+              <span className="text-xs block text-muted-foreground -mt-1">Developer</span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
@@ -38,22 +42,26 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* Theme Toggle & CTA */}
           <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             <a href="#contact">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 glow-primary">
+              <Button className="bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 glow-primary">
                 Let's Talk
               </Button>
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -71,7 +79,7 @@ const Header = () => {
                 </a>
               ))}
               <a href="#contact" onClick={() => setIsMenuOpen(false)}>
-                <Button className="bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-4">
+                <Button className="bg-gradient-to-r from-primary to-accent text-primary-foreground w-full mt-4">
                   Let's Talk
                 </Button>
               </a>
