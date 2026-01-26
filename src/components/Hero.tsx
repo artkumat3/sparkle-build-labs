@@ -1,11 +1,12 @@
 import { ArrowRight, Award, Users, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import aryanPhoto from "@/assets/aryan-photo.jpg";
 
 const Hero = () => {
   const stats = [
-    { icon: Sparkles, value: "150+", label: "Projects" },
-    { icon: Award, value: "25+", label: "Awards" },
-    { icon: Users, value: "98%", label: "Client Joy" },
+    { icon: Sparkles, value: "50+", label: "Projects" },
+    { icon: Award, value: "AI", label: "Powered" },
+    { icon: Users, value: "100%", label: "Dedication" },
   ];
 
   return (
@@ -66,31 +67,28 @@ const Hero = () => {
           {/* Right Content - Profile Card */}
           <div className="relative">
             <div className="glass-card rounded-3xl p-8 space-y-6 animate-float">
-              {/* Profile Image Placeholder */}
+              {/* Profile Image */}
               <div className="w-full aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-secondary overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-32 h-32 mx-auto rounded-full bg-primary/30 flex items-center justify-center">
-                      <span className="text-6xl">👨‍💻</span>
-                    </div>
-                    <p className="text-muted-foreground text-sm">Your Photo Here</p>
-                  </div>
-                </div>
+                <img 
+                  src={aryanPhoto} 
+                  alt="Aryan Gupta" 
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
 
               {/* Profile Info */}
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold text-foreground">Your Name</h3>
-                  <p className="text-primary text-sm">Creative Director & UI/UX Designer</p>
+                  <h3 className="text-xl font-bold text-foreground">Aryan Gupta</h3>
+                  <p className="text-primary text-sm">Website Developer | AI Automation Developer</p>
                 </div>
 
                 {/* Skills */}
                 <div className="space-y-3">
                   {[
-                    { name: "UI/UX Design", value: 95 },
-                    { name: "Brand Identity", value: 90 },
-                    { name: "Web Development", value: 85 },
+                    { name: "Web Development", value: 95 },
+                    { name: "AI Automation", value: 90 },
+                    { name: "UI/UX Design", value: 85 },
                   ].map((skill) => (
                     <div key={skill.name} className="space-y-1">
                       <div className="flex justify-between text-sm">
@@ -111,7 +109,7 @@ const Hero = () => {
 
             {/* Floating badge */}
             <div className="absolute -top-4 -right-4 glass-card rounded-xl px-4 py-2 glow-primary">
-              <span className="text-primary font-bold">5+ Years</span>
+              <span className="text-primary font-bold">Open to Work</span>
             </div>
           </div>
         </div>
