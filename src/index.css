@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Aryan Gupta Portfolio - Professional Theme with Light/Dark Mode */
+/* Aryan Gupta Portfolio - ProCBSE Inspired Theme */
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    --background: 0 0% 100%;
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -15,24 +15,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 38 92% 50%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 280 80% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
+    --secondary: 270 50% 95%;
     --secondary-foreground: 222 47% 11%;
 
-    --muted: 215 20% 85%;
+    --muted: 270 20% 90%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 280 80% 60%;
+    --accent: 350 80% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 20% 88%;
-    --input: 215 20% 88%;
-    --ring: 38 92% 50%;
+    --border: 270 20% 88%;
+    --input: 270 20% 88%;
+    --ring: 280 80% 55%;
 
     --radius: 0.75rem;
 
@@ -41,54 +41,54 @@
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 38 92% 50%;
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-accent: 210 40% 96%;
+    --sidebar-primary: 280 80% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 50% 95%;
     --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 215 20% 88%;
-    --sidebar-ring: 38 92% 50%;
+    --sidebar-border: 270 20% 88%;
+    --sidebar-ring: 280 80% 55%;
   }
 
   .dark {
-    --background: 222 47% 11%;
+    --background: 260 30% 10%;
     --foreground: 0 0% 100%;
 
-    --card: 222 47% 14%;
+    --card: 260 30% 14%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 222 47% 14%;
+    --popover: 260 30% 14%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 38 92% 50%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 280 80% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 222 47% 18%;
+    --secondary: 260 30% 20%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 215 16% 47%;
-    --muted-foreground: 215 16% 65%;
+    --muted: 260 20% 30%;
+    --muted-foreground: 260 10% 70%;
 
-    --accent: 280 80% 60%;
+    --accent: 350 80% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 222 30% 25%;
-    --input: 222 30% 25%;
-    --ring: 38 92% 50%;
+    --border: 260 20% 25%;
+    --input: 260 20% 25%;
+    --ring: 280 80% 55%;
 
     --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
 
-    --sidebar-background: 222 47% 8%;
+    --sidebar-background: 260 30% 8%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 38 92% 50%;
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-accent: 222 47% 18%;
+    --sidebar-primary: 280 80% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 260 30% 20%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 222 30% 25%;
-    --sidebar-ring: 38 92% 50%;
+    --sidebar-border: 260 20% 25%;
+    --sidebar-ring: 280 80% 55%;
   }
 }
 
@@ -109,11 +109,11 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
   }
 
   .glow-primary {
-    box-shadow: 0 0 20px hsl(38 92% 50% / 0.4), 0 0 40px hsl(38 92% 50% / 0.2);
+    box-shadow: 0 0 20px hsl(280 80% 55% / 0.4), 0 0 40px hsl(280 80% 55% / 0.2);
   }
 
   .glass-card {
