@@ -1,44 +1,44 @@
-import { Palette, Monitor, Layers, PenTool, ArrowUpRight } from "lucide-react";
+import { Monitor, Bot, Palette, Workflow, ArrowUpRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Services = () => {
   const services = [
+    {
+      icon: Monitor,
+      title: "Web Development",
+      description: "Building scalable, responsive websites that look stunning and perform excellently on every device.",
+    },
+    {
+      icon: Bot,
+      title: "AI Automation",
+      description: "Automating workflows and processes using AI to help businesses save time and increase efficiency.",
+    },
     {
       icon: Palette,
       title: "UI/UX Design",
       description: "Creating intuitive and beautiful user interfaces that enhance user experience and drive engagement.",
     },
     {
-      icon: Monitor,
-      title: "Web Design",
-      description: "Crafting responsive, modern websites that look stunning on every device and convert visitors into customers.",
-    },
-    {
-      icon: Layers,
-      title: "Brand Design",
-      description: "Building cohesive brand identities that tell your story and create lasting impressions in the market.",
-    },
-    {
-      icon: PenTool,
-      title: "Graphic Design",
-      description: "Designing eye-catching visuals, illustrations, and marketing materials that communicate your message.",
+      icon: Workflow,
+      title: "Smart Solutions",
+      description: "Developing intelligent web applications that solve real problems and deliver meaningful results.",
     },
   ];
 
   const process = [
     {
       step: "01",
-      title: "Strategy & Research",
-      description: "Understanding your goals, audience, and market to create a solid foundation.",
+      title: "Understand & Research",
+      description: "Understanding your goals, audience, and requirements to create a solid foundation.",
     },
     {
       step: "02",
-      title: "Design & Development",
+      title: "Design & Develop",
       description: "Bringing ideas to life with creative design and cutting-edge development.",
     },
     {
       step: "03",
-      title: "Launch & Support",
+      title: "Deliver & Support",
       description: "Deploying your project and providing ongoing support for continued success.",
     },
   ];
@@ -51,7 +51,7 @@ const Services = () => {
           <span className="text-primary text-sm font-medium uppercase tracking-wider">What I Do</span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground">Services I Offer</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive design solutions tailored to elevate your brand and digital presence.
+            Comprehensive web development and AI automation solutions to help your business scale.
           </p>
         </div>
 
@@ -64,7 +64,7 @@ const Services = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <CardContent className="p-6 space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/20 transition-colors">
                   <service.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
@@ -85,7 +85,7 @@ const Services = () => {
         <div className="space-y-12">
           <div className="text-center space-y-4">
             <span className="text-primary text-sm font-medium uppercase tracking-wider">How I Work</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">My Creative Process</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">My Process</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
