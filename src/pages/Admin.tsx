@@ -20,6 +20,7 @@ interface Project {
   title: string;
   description: string;
   image_url: string | null;
+  dark_image_url: string | null;
   category: string;
   tags: string[];
   created_at: string;
@@ -46,6 +47,7 @@ const Admin = () => {
     title: "",
     description: "",
     image_url: "",
+    dark_image_url: "",
     category: "AI",
     tags: ""
   });
@@ -119,7 +121,7 @@ const Admin = () => {
       
       setIsDialogOpen(false);
       setEditingProject(null);
-      setFormData({ title: "", description: "", image_url: "", category: "AI", tags: "" });
+      setFormData({ title: "", description: "", image_url: "", dark_image_url: "", category: "AI", tags: "" });
       loadData();
     } catch (error: any) {
       toast({ title: "Error", description: error.message, variant: "destructive" });
@@ -146,6 +148,7 @@ const Admin = () => {
       title: project.title,
       description: project.description,
       image_url: project.image_url || "",
+      dark_image_url: project.dark_image_url || "",
       category: project.category,
       tags: project.tags.join(', ')
     });
@@ -259,7 +262,7 @@ const Admin = () => {
                   className="bg-primary"
                   onClick={() => {
                     setEditingProject(null);
-                    setFormData({ title: "", description: "", image_url: "", category: "AI", tags: "" });
+                    setFormData({ title: "", description: "", image_url: "", dark_image_url: "", category: "AI", tags: "" });
                   }}
                 >
                   <Plus className="w-4 h-4 mr-2" /> Add Project
@@ -284,9 +287,14 @@ const Admin = () => {
                     rows={4}
                   />
                   <Input
-                    placeholder="Image URL (optional)"
+                    placeholder="Image URL - Light Theme (optional)"
                     value={formData.image_url}
                     onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
+                  />
+                  <Input
+                    placeholder="Image URL - Dark Theme (optional)"
+                    value={formData.dark_image_url}
+                    onChange={(e) => setFormData({ ...formData, dark_image_url: e.target.value })}
                   />
                   <Input
                     placeholder="Category (AI, Web Development, Automation)"

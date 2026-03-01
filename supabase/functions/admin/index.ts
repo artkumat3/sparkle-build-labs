@@ -66,6 +66,7 @@ Deno.serve(async (req) => {
             title: data.title,
             description: data.description,
             image_url: data.image_url,
+            dark_image_url: data.dark_image_url,
             category: data.category || 'AI',
             tags: data.tags || []
           }])
@@ -83,6 +84,7 @@ Deno.serve(async (req) => {
             title: data.title,
             description: data.description,
             image_url: data.image_url,
+            dark_image_url: data.dark_image_url,
             category: data.category,
             tags: data.tags
           })
