@@ -125,7 +125,7 @@ const Projects = () => {
                 className="glass-card border-border/50 overflow-hidden group cursor-pointer hover:border-primary/50 transition-all duration-300"
               >
                 <CardContent className="p-0">
-                  <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-secondary h-48 flex items-center justify-center">
+                  <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-secondary dark:from-primary/15 dark:via-accent/10 dark:to-secondary/50 h-48 flex items-center justify-center border-b border-border/50">
                     {project.image_url ? (
                       <img 
                         src={project.image_url} 

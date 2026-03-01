@@ -10,14 +10,14 @@ const Footer = () => {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">D</span>
+              <span className="text-primary-foreground font-bold text-sm">A</span>
             </div>
-            <span className="text-foreground font-semibold">DesignStudio</span>
+            <span className="text-foreground font-semibold">Aryan Gupta</span>
           </div>
 
           {/* Copyright */}
           <p className="text-muted-foreground text-sm flex items-center gap-1">
-            © {currentYear} DesignStudio. Made with <Heart className="w-4 h-4 text-primary fill-primary" /> All rights reserved.
+            © {currentYear} Aryan Gupta. Made with <Heart className="w-4 h-4 text-primary fill-primary" /> All rights reserved.
           </p>
 
           {/* Links */}
