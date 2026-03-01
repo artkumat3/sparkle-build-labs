@@ -5,24 +5,24 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      role: "CEO, TechFlow Inc.",
-      content: "Working with this design studio was an absolute pleasure. They transformed our brand identity and exceeded all expectations. The attention to detail is remarkable.",
-      avatar: "SJ",
+      name: "Rajesh Sharma",
+      role: "Founder, TechVista Solutions",
+      content: "Aryan built our entire web platform from scratch. His technical skills and attention to detail are outstanding. The site runs flawlessly and our clients love it.",
+      avatar: "RS",
     },
     {
       id: 2,
-      name: "Michael Chen",
-      role: "Founder, StartupX",
-      content: "The creative vision and technical execution were flawless. Our new website has significantly improved our conversion rates and user engagement.",
-      avatar: "MC",
+      name: "Priya Patel",
+      role: "CEO, EduSmart India",
+      content: "The AI automation tools Aryan developed for our edtech platform saved us countless hours. His understanding of AI and practical implementation is truly impressive.",
+      avatar: "PP",
     },
     {
       id: 3,
-      name: "Emily Davis",
-      role: "Marketing Director, ConsultPro",
-      content: "Exceptional creativity and professionalism. They understood our vision immediately and delivered beyond what we imagined. Highly recommended!",
-      avatar: "ED",
+      name: "Amit Verma",
+      role: "Director, GrowthBox Digital",
+      content: "Working with Aryan was a game-changer for our business. He delivered smart automation solutions that boosted our efficiency by 40%. Highly recommended!",
+      avatar: "AV",
     },
   ];
 
