@@ -1,0 +1,1 @@
+ALTER TABLE public.projects ADD COLUMN dark_image_url text DEFAULT NULL;
