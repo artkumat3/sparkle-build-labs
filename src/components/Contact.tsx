@@ -54,7 +54,7 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, label: "Email", value: "aryankumatgupta2009@mail.com" },
+    { icon: Mail, label: "Email", value: "aryan-gupta@zohomail.in" },
   ];
 
   return (
