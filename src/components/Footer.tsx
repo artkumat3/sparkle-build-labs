@@ -1,5 +1,6 @@
 import { Heart } from "lucide-react";
 import { motion } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,9 +17,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">A</span>
-            </div>
+            <img src={logo} alt="Aryan Gupta Logo" className="w-8 h-8 rounded-full" width={32} height={32} loading="lazy" />
             <span className="text-foreground font-semibold">Aryan Gupta</span>
           </div>
 
