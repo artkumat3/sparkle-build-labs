@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin, Bot, Code } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import aryanPhoto from "@/assets/aryan-photo.jpg";
@@ -6,147 +6,91 @@ import aryanPhoto from "@/assets/aryan-photo.jpg";
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/10" />
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
-      <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-primary/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: "4s" }} />
+      {/* Floating orbs */}
+      <div className="absolute top-20 left-20 w-40 h-40 rounded-full bg-primary/20 blur-3xl animate-orb" />
+      <div className="absolute bottom-32 right-20 w-64 h-64 rounded-full bg-primary/15 blur-3xl animate-orb" style={{ animationDelay: "3s" }} />
+      <div className="absolute top-1/2 right-1/3 w-32 h-32 rounded-full bg-accent/10 blur-2xl animate-orb" style={{ animationDelay: "5s" }} />
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Content */}
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+          {/* Avatar */}
           <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mb-10"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
           >
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm text-foreground font-medium">Available for new projects</span>
-            </motion.div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight tracking-tight">
-              Hi, I'm{" "}
-              <span className="text-gradient">Aryan Gupta</span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-muted-foreground font-medium">
-              Website Developer | AI Automation Developer
-            </p>
-
-            <p className="text-lg text-muted-foreground max-w-md leading-relaxed">
-              Helping Businesses Scale with Smart Web & AI Solutions. I build scalable websites and automate workflows using AI.
-            </p>
-
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <MapPin className="w-4 h-4 text-primary" />
-              <span className="text-sm">Mau, Uttar Pradesh, India</span>
-            </div>
-
-            <motion.div
-              className="flex flex-wrap gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <a href="#projects">
-                <Button size="lg" className="bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 glow-primary group text-base px-8">
-                  View My Work
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </a>
-              <a href="#contact">
-                <Button size="lg" variant="outline" className="border-border hover:bg-secondary text-base px-8">
-                  Get In Touch
-                </Button>
-              </a>
-            </motion.div>
-
-            {/* Quick Stats */}
-            <div className="flex gap-8 pt-4">
-              <motion.div
-                className="flex items-center gap-3"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
-                  <Code className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <span className="text-2xl font-bold text-foreground">50+</span>
-                  <p className="text-xs text-muted-foreground">Projects</p>
-                </div>
-              </motion.div>
-              <motion.div
-                className="flex items-center gap-3"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1 }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                  <Bot className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <span className="text-2xl font-bold text-foreground">AI</span>
-                  <p className="text-xs text-muted-foreground">Powered</p>
-                </div>
-              </motion.div>
+            <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden ring-2 ring-primary/20 ring-offset-4 ring-offset-background mx-auto">
+              <img
+                src={aryanPhoto}
+                alt="Aryan Gupta"
+                className="w-full h-full object-cover object-top"
+              />
             </div>
           </motion.div>
 
-          {/* Right Content - Profile Card */}
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: 60, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          {/* Greeting */}
+          <motion.h2
+            className="text-lg md:text-xl text-muted-foreground mb-4 tracking-wide"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
           >
-            <div className="glass-card rounded-3xl p-6 space-y-6 animate-float shadow-2xl shadow-primary/10">
-              {/* Profile Image */}
-              <div className="w-full aspect-square rounded-2xl overflow-hidden relative ring-2 ring-primary/20">
-                <img 
-                  src={aryanPhoto} 
-                  alt="Aryan Gupta" 
-                  className="w-full h-full object-cover object-top"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-              </div>
+            Hello! I'm
+          </motion.h2>
 
-              {/* Profile Info */}
-              <div className="space-y-3 text-center">
-                <h3 className="text-2xl font-bold text-foreground">Aryan Gupta</h3>
-                <p className="text-primary text-sm font-medium">Website Developer | AI Automation</p>
-                
-                {/* Skills Pills */}
-                <div className="flex flex-wrap justify-center gap-2 pt-2">
-                  {["Web Dev", "AI", "UI/UX", "Automation"].map((skill) => (
-                    <span key={skill} className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+          {/* Name */}
+          <motion.h1
+            className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-none mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+          >
+            Aryan Gupta
+          </motion.h1>
 
-            {/* Floating badge */}
-            <motion.div
-              className="absolute -top-4 -right-4 glass-card rounded-xl px-4 py-2 glow-primary shadow-lg"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
-            >
-              <span className="text-primary font-bold text-sm">Open to Work</span>
-            </motion.div>
+          {/* Description */}
+          <motion.p
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            A creative developer building scalable websites and automating workflows with AI — helping businesses work smarter.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+          >
+            <a href="#projects">
+              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 text-sm uppercase tracking-wider px-8 rounded-full">
+                View Work
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </a>
+            <a href="#contact">
+              <Button size="lg" variant="outline" className="border-border hover:bg-secondary text-sm uppercase tracking-wider px-8 rounded-full">
+                Contact
+              </Button>
+            </a>
           </motion.div>
         </div>
       </div>
+
+      {/* Resume badge - bottom right */}
+      <motion.a
+        href="#contact"
+        className="fixed bottom-8 right-8 z-40 hidden lg:flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+      >
+        Resume <FileText className="w-4 h-4" />
+      </motion.a>
     </section>
   );
 };
