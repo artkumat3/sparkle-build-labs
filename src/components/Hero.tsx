@@ -3,6 +3,12 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import aryanPhoto from "@/assets/aryan-photo.jpg";
 
+const metrics = [
+  { value: "6+", label: "Shipped projects" },
+  { value: "70%", label: "Manual work removed" },
+  { value: "500+", label: "Ads auto-scanned" },
+];
+
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
@@ -13,7 +19,6 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          {/* Avatar */}
           <motion.div
             className="mb-10"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -29,7 +34,6 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Greeting */}
           <motion.h2
             className="text-lg md:text-xl text-muted-foreground mb-4 tracking-wide"
             initial={{ opacity: 0, y: 20 }}
@@ -39,7 +43,6 @@ const Hero = () => {
             Hello! I'm
           </motion.h2>
 
-          {/* Name */}
           <motion.h1
             className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-none mb-6"
             initial={{ opacity: 0, y: 30 }}
@@ -49,39 +52,62 @@ const Hero = () => {
             Aryan Gupta
           </motion.h1>
 
-          {/* Description */}
           <motion.p
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10"
+            className="text-lg md:text-2xl text-foreground/90 max-w-2xl leading-relaxed mb-4 font-medium"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.55 }}
           >
-            A creative developer building scalable websites and automating workflows with AI — helping businesses work smarter.
+            Full-stack developer building AI-powered web apps and automation systems that eliminate repetitive work.
           </motion.p>
 
-          {/* CTAs */}
+          <motion.p
+            className="text-sm md:text-base text-muted-foreground max-w-xl leading-relaxed mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65 }}
+          >
+            React · Next.js · TypeScript · Python · Supabase · OpenAI / LangChain
+          </motion.p>
+
           <motion.div
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-wrap justify-center gap-4 mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
             <a href="#projects">
               <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 text-sm uppercase tracking-wider px-8 rounded-full">
-                View Work
+                View Case Studies
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </a>
             <a href="#contact">
               <Button size="lg" variant="outline" className="border-border hover:bg-secondary text-sm uppercase tracking-wider px-8 rounded-full">
-                Contact
+                Hire Me
               </Button>
             </a>
+          </motion.div>
+
+          {/* Metrics */}
+          <motion.div
+            className="grid grid-cols-3 gap-4 md:gap-10 w-full max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+          >
+            {metrics.map((m) => (
+              <div key={m.label} className="text-center">
+                <p className="text-2xl md:text-4xl font-bold text-foreground">{m.value}</p>
+                <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-widest mt-1">
+                  {m.label}
+                </p>
+              </div>
+            ))}
           </motion.div>
         </div>
       </div>
 
-      {/* Resume badge - bottom right */}
       <motion.a
         href="#contact"
         className="fixed bottom-8 right-8 z-40 hidden lg:flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"

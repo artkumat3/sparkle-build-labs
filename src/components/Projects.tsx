@@ -44,19 +44,28 @@ const Projects = () => {
 
   const defaultProjects: Project[] = [
     {
-      id: "1", title: "UnMask — Coaching Ad Transparency",
-      description: "A public-interest platform that audits coaching institute advertisements for misleading claims using AI.",
-      image_url: null, dark_image_url: null, category: "AI", tags: ["AI", "Product Design", "OCR"], created_at: "2026-01-01",
+      id: "unmask",
+      title: "UnMask — Coaching Ad Transparency",
+      description:
+        "AI platform that detects misleading coaching-institute ads by analyzing topper claims and surfacing conflicts across institutes.",
+      image_url: null, dark_image_url: null,
+      category: "AI", tags: ["AI", "OCR", "Supabase"], created_at: "2026-01-01",
     },
     {
-      id: "2", title: "BrainX — AI Test Generator",
-      description: "An AI-powered test platform for Class 10 toppers, offering 100% CBSE-aligned questions and smart analytics.",
-      image_url: null, dark_image_url: null, category: "AI", tags: ["AI", "EdTech", "Web App"], created_at: "2025-01-01",
+      id: "mau-care",
+      title: "Mau Care — Local Healthcare Booking",
+      description:
+        "Booking + records platform for small clinics in Mau (UP). Phone-OTP auth, slot locking, offline-tolerant intake.",
+      image_url: null, dark_image_url: null,
+      category: "Web Development", tags: ["Next.js", "Supabase", "Healthcare"], created_at: "2025-09-01",
     },
     {
-      id: "3", title: "Business Automation Suite",
-      description: "Automated workflow solutions using AI-powered tools and integrations for businesses.",
-      image_url: null, dark_image_url: null, category: "Automation", tags: ["Automation", "AI", "Integration"], created_at: "2025-01-01",
+      id: "brainx",
+      title: "BrainX — AI Test Generator",
+      description:
+        "CBSE-aligned AI test platform with verified question generation, instant evaluation, and topic-level analytics.",
+      image_url: null, dark_image_url: null,
+      category: "AI", tags: ["AI", "EdTech", "FastAPI"], created_at: "2025-06-01",
     },
   ];
 

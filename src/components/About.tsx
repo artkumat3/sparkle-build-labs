@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 
 const About = () => {
   const skills = [
-    "React", "TypeScript", "Node.js", "AI/ML",
-    "Next.js", "Tailwind CSS", "Python", "Automation",
+    "React", "Next.js", "TypeScript", "Tailwind",
+    "Python", "FastAPI", "Supabase", "Postgres",
+    "OpenAI", "LangChain", "Vercel", "Docker",
   ];
 
   return (
@@ -19,9 +20,8 @@ const About = () => {
           >
             <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-widest">About</h2>
             <p className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-foreground">
-              I build things for the web that are{" "}
-              <span className="text-primary">smart</span> and{" "}
-              <span className="text-primary">scalable</span>.
+              I ship full-stack apps and{" "}
+              <span className="text-primary">AI automations</span> that remove the boring work.
             </p>
           </motion.div>
 
@@ -34,17 +34,16 @@ const About = () => {
           >
             <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
               <p>
-                I'm a Website Developer and AI Automation Developer based in Mau, Uttar Pradesh, India. I focus on building scalable websites and automating workflows using AI to help businesses save time.
+                I'm a full-stack developer based in Mau, Uttar Pradesh. I build production web apps and AI-powered automations for small businesses, clinics, and early-stage startups — the kind of work that replaces spreadsheets, paper registers, and copy-paste workflows.
               </p>
               <p>
-                Every project is an opportunity to solve real problems and deliver meaningful results. I'm passionate about using technology to make work smarter and more accessible.
+                Recent things I've shipped: an OCR + LLM platform that audits coaching-institute ads (<span className="text-foreground">UnMask</span>), a clinic booking + records system for a tier-3 town (<span className="text-foreground">Mau Care</span>), and a CBSE-aligned AI test generator (<span className="text-foreground">BrainX</span>).
               </p>
               <p className="text-foreground font-medium">
-                Open to internship, part-time, and full-time roles.
+                Currently open to internships, contract work, and full-time roles.
               </p>
             </div>
 
-            {/* Skills */}
             <div className="flex flex-wrap gap-3 pt-4">
               {skills.map((skill) => (
                 <span
