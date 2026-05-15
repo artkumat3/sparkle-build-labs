@@ -7,13 +7,11 @@ import Projects from "@/components/Projects";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import SocialSidebar from "@/components/SocialSidebar";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <SocialSidebar />
       <Hero />
       <Marquee />
       <About />
