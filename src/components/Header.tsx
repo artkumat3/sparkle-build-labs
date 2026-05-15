@@ -10,9 +10,10 @@ const Header = () => {
   const { resolvedTheme } = useTheme();
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Work", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "/#about" },
+    { name: "Engineering", href: "/#engineering" },
+    { name: "Work", href: "/#projects" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   const currentLogo = resolvedTheme === "dark" ? logoLight : logoDark;
