@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Send, Mail, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -57,25 +57,19 @@ const Contact = () => {
                   aryan-gupta@zohomail.in
                 </a>
               </div>
-              <div className="flex items-center gap-4">
-                <MapPin className="w-5 h-5 text-primary" />
-                <span className="text-muted-foreground">Mau, Uttar Pradesh, India</span>
-              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+                Best for project inquiries, contract work, and full-time roles. I usually reply within 24 hours.
+              </p>
             </div>
 
             <div className="space-y-4 pt-4">
-              <p className="text-sm text-muted-foreground uppercase tracking-widest">Social</p>
-              <div className="flex flex-col gap-3">
-                {["Github", "LinkedIn", "Twitter", "Instagram"].map((social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="group flex items-center gap-2 text-foreground hover:text-primary transition-colors w-fit"
-                  >
-                    <span className="text-base">{social}</span>
-                    <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
-                ))}
+              <p className="text-sm text-muted-foreground uppercase tracking-widest">Currently</p>
+              <div className="flex items-center gap-3">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
+                </span>
+                <span className="text-foreground text-sm">Open to internships, contract, and full-time roles</span>
               </div>
             </div>
           </motion.div>

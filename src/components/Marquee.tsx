@@ -1,13 +1,13 @@
 const Marquee = () => {
   const items = [
-    "A CREATIVE DEVELOPER",
-    "•",
+    "FULL-STACK DEVELOPER",
+    "✦",
     "AI AUTOMATION",
-    "•",
-    "WEB DEVELOPMENT",
-    "•",
-    "SMART SOLUTIONS",
-    "•",
+    "✦",
+    "PRODUCTION-GRADE SYSTEMS",
+    "✦",
+    "SHIP, THEN MEASURE",
+    "✦",
   ];
 
   return (
