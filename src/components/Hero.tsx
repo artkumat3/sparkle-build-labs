@@ -1,4 +1,4 @@
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import aryanPhoto from "@/assets/aryan-photo.jpg";
@@ -108,15 +108,6 @@ const Hero = () => {
         </div>
       </div>
 
-      <motion.a
-        href="#contact"
-        className="fixed bottom-8 right-8 z-40 hidden lg:flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-      >
-        Resume <FileText className="w-4 h-4" />
-      </motion.a>
     </section>
   );
 };
