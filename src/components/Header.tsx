@@ -31,7 +31,7 @@ const Header = () => {
           {/* Center - Email */}
           <a
             href="mailto:aryan-gupta@zohomail.in"
-            className="hidden md:block text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="hidden lg:block text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             aryan-gupta@zohomail.in
           </a>
