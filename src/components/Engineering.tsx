@@ -1,13 +1,6 @@
 import { motion } from "framer-motion";
 import { Rocket, Workflow, Layers } from "lucide-react";
 
-const stack = [
-  { group: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Framer Motion"] },
-  { group: "Backend", items: ["Node.js", "FastAPI", "Supabase", "Postgres", "Prisma", "Edge Functions"] },
-  { group: "AI & Data", items: ["OpenAI", "LangChain", "pgvector", "OCR (Tesseract)", "Redis", "Cron jobs"] },
-  { group: "Infra", items: ["Vercel", "Docker", "GitHub Actions", "Resend", "Razorpay", "Supabase Storage"] },
-];
-
 const principles = [
   {
     icon: Rocket,
@@ -28,62 +21,41 @@ const principles = [
 
 const Engineering = () => {
   return (
-    <section id="engineering" className="py-32 border-t border-border/30">
+    <section id="engineering" className="py-24 md:py-32 border-t border-border/30 relative">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
-          className="mb-16"
+          className="mb-12 max-w-3xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4">
-            Engineering
-          </h2>
-          <p className="text-3xl md:text-4xl font-bold text-foreground max-w-2xl">
+          <h2 className="text-xs font-medium text-primary uppercase tracking-[0.25em] mb-5">Engineering</h2>
+          <p className="font-display text-3xl md:text-5xl font-bold leading-tight tracking-tight">
             How I build, and what I build with.
           </p>
         </motion.div>
 
-        {/* Tech stack */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border/50 border border-border/50 rounded-2xl overflow-hidden mb-16">
-          {stack.map((col, i) => (
-            <motion.div
-              key={col.group}
-              className="bg-background p-8 space-y-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-            >
-              <h3 className="text-xs font-medium text-primary uppercase tracking-widest">
-                {col.group}
-              </h3>
-              <ul className="space-y-2">
-                {col.items.map((item) => (
-                  <li key={item} className="text-sm text-foreground/80">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Principles */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {principles.map((p, i) => (
             <motion.div
               key={p.title}
-              className="p-8 rounded-2xl border border-border/50 hover:border-primary/40 transition-colors"
-              initial={{ opacity: 0, y: 20 }}
+              className="bento p-8 space-y-5 min-h-[220px] flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <p.icon className="w-7 h-7 text-primary mb-5" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">{p.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+              <div className="w-11 h-11 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                <p.icon className="w-5 h-5 text-primary" />
+              </div>
+              <div className="space-y-2 flex-1">
+                <h3 className="font-display text-xl font-semibold text-foreground">{p.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest text-muted-foreground/60">
+                0{i + 1} / 03
+              </span>
             </motion.div>
           ))}
         </div>

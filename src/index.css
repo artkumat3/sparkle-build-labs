@@ -4,89 +4,91 @@
 
 @layer base {
   :root {
-    --background: 240 5% 96%;
-    --foreground: 240 10% 10%;
+    /* Light mode — soft indigo on near-white */
+    --background: 240 30% 97%;
+    --foreground: 240 45% 9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
+    --card-foreground: 240 45% 9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
+    --popover-foreground: 240 45% 9%;
 
-    --primary: 260 60% 55%;
+    --primary: 244 76% 59%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 5% 90%;
-    --secondary-foreground: 240 10% 10%;
+    --secondary: 240 20% 93%;
+    --secondary-foreground: 240 45% 9%;
 
-    --muted: 240 5% 85%;
-    --muted-foreground: 240 5% 45%;
+    --muted: 240 15% 92%;
+    --muted-foreground: 240 10% 40%;
 
-    --accent: 260 40% 45%;
+    --accent: 244 70% 65%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 5% 85%;
-    --input: 240 5% 85%;
-    --ring: 260 60% 55%;
+    --border: 240 15% 88%;
+    --input: 240 15% 88%;
+    --ring: 244 76% 59%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 240 10% 10%;
-    --sidebar-primary: 260 60% 55%;
+    --sidebar-foreground: 240 45% 9%;
+    --sidebar-primary: 244 76% 59%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 5% 90%;
-    --sidebar-accent-foreground: 240 10% 10%;
-    --sidebar-border: 240 5% 85%;
-    --sidebar-ring: 260 60% 55%;
+    --sidebar-accent: 240 20% 93%;
+    --sidebar-accent-foreground: 240 45% 9%;
+    --sidebar-border: 240 15% 88%;
+    --sidebar-ring: 244 76% 59%;
   }
 
   .dark {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 95%;
+    /* Midnight Indigo */
+    --background: 240 45% 5%;
+    --foreground: 240 30% 96%;
 
-    --card: 240 10% 8%;
-    --card-foreground: 0 0% 95%;
+    --card: 240 42% 10%;
+    --card-foreground: 240 30% 96%;
 
-    --popover: 240 10% 8%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 240 42% 10%;
+    --popover-foreground: 240 30% 96%;
 
-    --primary: 260 60% 60%;
+    --primary: 244 80% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 10% 12%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 240 40% 14%;
+    --secondary-foreground: 240 30% 96%;
 
-    --muted: 240 10% 18%;
-    --muted-foreground: 240 5% 55%;
+    --muted: 240 35% 16%;
+    --muted-foreground: 240 15% 65%;
 
-    --accent: 260 40% 50%;
+    --accent: 250 70% 70%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62% 30%;
+    --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 260 60% 60%;
+    --border: 240 35% 18%;
+    --input: 240 35% 18%;
+    --ring: 244 80% 65%;
 
     --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
 
-    --sidebar-background: 240 10% 3%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 260 60% 60%;
+    --sidebar-background: 240 45% 4%;
+    --sidebar-foreground: 240 30% 96%;
+    --sidebar-primary: 244 80% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 10% 12%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 240 10% 15%;
-    --sidebar-ring: 260 60% 60%;
+    --sidebar-accent: 240 40% 14%;
+    --sidebar-accent-foreground: 240 30% 96%;
+    --sidebar-border: 240 35% 18%;
+    --sidebar-ring: 244 80% 65%;
   }
 }
 
@@ -96,8 +98,12 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
   }
 
   html {
@@ -107,24 +113,57 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
+    background-size: 200% 100%;
+    animation: shimmer 6s linear infinite;
   }
 
   .glow-primary {
-    box-shadow: 0 0 30px hsl(260 60% 55% / 0.3), 0 0 60px hsl(260 60% 55% / 0.15);
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.35), 0 0 80px hsl(var(--primary) / 0.15);
+  }
+
+  /* Bento card — the spine of the whole layout */
+  .bento {
+    @apply relative rounded-3xl border border-border/60 bg-card/70 backdrop-blur-xl overflow-hidden;
+    background-image:
+      radial-gradient(800px circle at var(--mx, 50%) var(--my, 0%), hsl(var(--primary) / 0.06), transparent 40%);
+    transition: border-color 0.4s ease, transform 0.4s ease;
+  }
+  .bento:hover {
+    @apply border-primary/40;
+  }
+
+  .bento-glow {
+    @apply bento;
+    background-image:
+      radial-gradient(circle at 0% 0%, hsl(var(--primary) / 0.18), transparent 50%),
+      radial-gradient(circle at 100% 100%, hsl(var(--accent) / 0.12), transparent 50%);
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   }
 
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-border/30;
+    @apply bg-card/60 backdrop-blur-xl border border-border/40;
   }
 
   .marquee {
-    animation: marquee 25s linear infinite;
+    animation: marquee 30s linear infinite;
   }
 
   .marquee-reverse {
-    animation: marquee-reverse 25s linear infinite;
+    animation: marquee-reverse 30s linear infinite;
   }
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
 @keyframes marquee {
@@ -139,19 +178,19 @@
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-12px); }
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
 @keyframes orb-float {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.05); }
-  66% { transform: translate(-20px, 15px) scale(0.95); }
+  33% { transform: translate(40px, -30px) scale(1.1); }
+  66% { transform: translate(-30px, 20px) scale(0.95); }
 }
 
 .animate-orb {
-  animation: orb-float 8s ease-in-out infinite;
+  animation: orb-float 12s ease-in-out infinite;
 }
