@@ -4,10 +4,19 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+import logoUnmask from "@/assets/logo-unmask.png";
+import logoMauCare from "@/assets/logo-maucare.png";
+import logoBrainX from "@/assets/logo-brainx.png";
 
 const liveLinks: Record<string, string> = {
   unmask: "https://un-mask.vercel.app/",
   "mau-care": "https://maucare26.vercel.app",
+};
+
+const logoMap: Record<string, string> = {
+  unmask: logoUnmask,
+  "mau-care": logoMauCare,
+  brainx: logoBrainX,
 };
 
 interface Project {
@@ -141,8 +150,8 @@ const ProjectTile = ({
       transition={{ duration: 0.5, delay }}
     >
       <Link to={`/projects/${project.id}`} className="bento h-full group flex flex-col overflow-hidden">
-        {/* Image area */}
-        <div className="relative flex-1 min-h-[140px] overflow-hidden bg-secondary/50">
+        {/* Image / logo area */}
+        <div className="relative flex-1 min-h-[160px] overflow-hidden bg-gradient-to-br from-secondary/40 via-card to-background grid-pattern">
           {img ? (
             <img
               src={img}
@@ -150,12 +159,21 @@ const ProjectTile = ({
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
             />
+          ) : logoMap[project.id] ? (
+            <div className="absolute inset-0 flex items-center justify-center p-8">
+              <img
+                src={logoMap[project.id]}
+                alt={`${project.title} logo`}
+                className="max-h-[70%] max-w-[70%] object-contain drop-shadow-[0_8px_30px_hsl(var(--primary)/0.35)] transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
           ) : (
-            <div className="absolute inset-0 grid-pattern flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center">
               <Icon className="w-12 h-12 text-primary/60" />
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-card/95 via-card/30 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card/95 to-transparent" />
         </div>
 
         {/* Meta */}
