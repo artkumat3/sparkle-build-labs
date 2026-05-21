@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
-import { ArrowUpRight, Bot, Shield, Sparkles, Code } from "lucide-react";
+import { ArrowUpRight, Bot, Shield, Sparkles, Code, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+
+const liveLinks: Record<string, string> = {
+  unmask: "https://un-mask.vercel.app/",
+  "mau-care": "https://maucare26.vercel.app",
+};
 
 interface Project {
   id: string;
