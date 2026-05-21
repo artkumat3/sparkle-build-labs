@@ -4,10 +4,19 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+import logoUnmask from "@/assets/logo-unmask.png";
+import logoMauCare from "@/assets/logo-maucare.png";
+import logoBrainX from "@/assets/logo-brainx.png";
 
 const liveLinks: Record<string, string> = {
   unmask: "https://un-mask.vercel.app/",
   "mau-care": "https://maucare26.vercel.app",
+};
+
+const logoMap: Record<string, string> = {
+  unmask: logoUnmask,
+  "mau-care": logoMauCare,
+  brainx: logoBrainX,
 };
 
 interface Project {
