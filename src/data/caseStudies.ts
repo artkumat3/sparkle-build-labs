@@ -60,6 +60,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       { metric: "<5s", label: "Avg. OCR + extraction per ad" },
     ],
     tags: ["AI", "OCR", "pgvector", "Civic Tech", "Supabase"],
+    links: [{ label: "Visit live site", href: "https://un-mask.vercel.app/" }],
   },
 
   "mau-care": {
