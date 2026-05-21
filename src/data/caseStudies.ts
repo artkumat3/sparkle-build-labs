@@ -106,6 +106,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       { metric: "0", label: "Double-booked slots (Postgres lock)" },
     ],
     tags: ["Next.js", "Supabase", "Healthcare", "RLS", "Razorpay"],
+    links: [{ label: "Visit live site", href: "https://maucare26.vercel.app" }],
   },
 
   brainx: {
