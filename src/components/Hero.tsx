@@ -45,6 +45,9 @@ const Hero = () => {
               <p className="text-lg md:text-2xl text-foreground/80 max-w-2xl leading-snug font-medium">
                 Full-stack developer building AI-powered web apps and automation systems that eliminate repetitive work.
               </p>
+              <p className="text-sm md:text-base text-primary/90 font-medium tracking-wide">
+                Vibe coder — not a real coder.
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-3 pt-4">
