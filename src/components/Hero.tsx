@@ -64,22 +64,26 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Photo card */}
+          {/* Photo card — circular portrait */}
           <motion.div
-            className="bento col-span-1 md:col-span-3 lg:col-span-4 lg:row-span-2 relative min-h-[260px] overflow-hidden group"
+            className="bento col-span-1 md:col-span-3 lg:col-span-4 lg:row-span-2 relative min-h-[260px] p-8 flex flex-col items-center justify-center gap-5"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <img
-              src={aryanPhoto}
-              alt="Aryan Gupta"
-              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 space-y-1">
+            <div className="relative">
+              <div className="absolute -inset-3 rounded-full bg-gradient-to-tr from-primary/40 via-accent/30 to-primary/20 blur-2xl opacity-70" />
+              <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden ring-1 ring-border/60">
+                <img
+                  src={aryanPhoto}
+                  alt="Aryan Gupta"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            </div>
+            <div className="text-center space-y-1">
               <p className="font-display text-lg font-semibold">Aryan Gupta</p>
-              <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+              <p className="text-xs text-muted-foreground flex items-center justify-center gap-1.5">
                 <MapPin className="w-3 h-3" /> Mau, Uttar Pradesh
               </p>
             </div>
