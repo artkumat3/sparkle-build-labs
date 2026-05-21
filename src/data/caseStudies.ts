@@ -60,6 +60,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       { metric: "<5s", label: "Avg. OCR + extraction per ad" },
     ],
     tags: ["AI", "OCR", "pgvector", "Civic Tech", "Supabase"],
+    links: [{ label: "Visit live site", href: "https://un-mask.vercel.app/" }],
   },
 
   "mau-care": {
@@ -105,6 +106,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       { metric: "0", label: "Double-booked slots (Postgres lock)" },
     ],
     tags: ["Next.js", "Supabase", "Healthcare", "RLS", "Razorpay"],
+    links: [{ label: "Visit live site", href: "https://maucare26.vercel.app" }],
   },
 
   brainx: {

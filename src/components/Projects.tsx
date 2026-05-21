@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
-import { ArrowUpRight, Bot, Shield, Sparkles, Code } from "lucide-react";
+import { ArrowUpRight, Bot, Shield, Sparkles, Code, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+
+const liveLinks: Record<string, string> = {
+  unmask: "https://un-mask.vercel.app/",
+  "mau-care": "https://maucare26.vercel.app",
+};
 
 interface Project {
   id: string;
@@ -164,12 +169,25 @@ const ProjectTile = ({
           <p className={`text-sm text-muted-foreground leading-relaxed ${large ? "" : "line-clamp-2"}`}>
             {project.description}
           </p>
-          <div className="flex flex-wrap gap-1.5 pt-1">
-            {project.tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary/70 border border-border/40 text-muted-foreground uppercase tracking-wider">
-                {tag}
-              </span>
-            ))}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+            <div className="flex flex-wrap gap-1.5">
+              {project.tags.slice(0, 3).map((tag) => (
+                <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary/70 border border-border/40 text-muted-foreground uppercase tracking-wider">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            {liveLinks[project.id] && (
+              <a
+                href={liveLinks[project.id]}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 text-[11px] uppercase tracking-wider text-primary hover:text-primary/80 font-medium"
+              >
+                Visit live <ExternalLink className="w-3 h-3" />
+              </a>
+            )}
           </div>
         </div>
       </Link>
