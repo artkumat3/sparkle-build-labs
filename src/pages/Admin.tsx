@@ -18,11 +18,18 @@ import {
 interface Project {
   id: string;
   title: string;
+  summary: string | null;
   description: string;
   image_url: string | null;
   dark_image_url: string | null;
+  logo_url: string | null;
   category: string;
+  year: string | null;
+  live_url: string | null;
+  github_url: string | null;
   tags: string[];
+  features: string[];
+  metrics: { value: string; label: string }[];
   created_at: string;
 }
 
@@ -34,6 +41,22 @@ interface Contact {
   created_at: string;
 }
 
+const emptyForm = {
+  title: "",
+  summary: "",
+  description: "",
+  image_url: "",
+  dark_image_url: "",
+  logo_url: "",
+  category: "AI",
+  year: "",
+  live_url: "",
+  github_url: "",
+  tags: "",
+  features: "",
+  metrics: "", // one per line: "value | label"
+};
+
 const Admin = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
@@ -43,14 +66,7 @@ const Admin = () => {
   const [stats, setStats] = useState({ totalContacts: 0, totalProjects: 0 });
   const [editingProject, setEditingProject] = useState<Project | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    image_url: "",
-    dark_image_url: "",
-    category: "AI",
-    tags: ""
-  });
+  const [formData, setFormData] = useState(emptyForm);
   
   const { toast } = useToast();
   const navigate = useNavigate();
