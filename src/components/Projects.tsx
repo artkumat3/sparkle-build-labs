@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowUpRight, Bot, Shield, Sparkles, Code, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useTheme } from "next-themes";
@@ -8,34 +8,100 @@ import logoUnmask from "@/assets/logo-unmask.png";
 import logoMauCare from "@/assets/logo-maucare.png";
 import logoBrainX from "@/assets/logo-brainx.png";
 
-const liveLinks: Record<string, string> = {
-  unmask: "https://un-mask.vercel.app/",
-  "mau-care": "https://maucare26.vercel.app",
-};
-
-const logoMap: Record<string, string> = {
-  unmask: logoUnmask,
-  "mau-care": logoMauCare,
-  brainx: logoBrainX,
-};
-
 interface Project {
   id: string;
   title: string;
+  summary: string;
   description: string;
   image_url: string | null;
   dark_image_url: string | null;
   category: string;
   tags: string[];
+  features: string[];
+  metrics: { value: string; label: string }[];
+  live_url?: string;
+  github_url?: string;
+  logo?: string;
+  year?: string;
   created_at: string;
 }
 
-const iconMap: Record<string, any> = {
-  AI: Bot,
-  "Web Development": Code,
-  Automation: Sparkles,
-  default: Shield,
-};
+const defaults: Project[] = [
+  {
+    id: "unmask",
+    title: "UnMask",
+    summary: "AI-powered transparency layer for misleading coaching-institute ads.",
+    description:
+      "Detects duplicated topper claims across coaching ads by combining OCR, LLM extraction, and pgvector similarity — then auto-generates evidence packs ready for consumer-court complaints.",
+    image_url: null, dark_image_url: null,
+    category: "AI · Civic Tech",
+    year: "2026",
+    tags: ["React", "Supabase", "OpenAI", "pgvector", "Tailwind"],
+    features: [
+      "OCR + LLM extraction pipeline",
+      "Cross-institute conflict detection",
+      "Auto-generated evidence PDFs",
+      "RLS-scoped per-user storage",
+    ],
+    metrics: [
+      { value: "500+", label: "Ads scanned" },
+      { value: "12", label: "Conflicts surfaced" },
+      { value: "<5s", label: "Per-ad processing" },
+    ],
+    live_url: "https://un-mask.vercel.app/",
+    logo: logoUnmask,
+    created_at: "2026-01-01",
+  },
+  {
+    id: "mau-care",
+    title: "Mau Care",
+    summary: "Booking and records platform built for single-doctor clinics in Mau, UP.",
+    description:
+      "Replaces paper registers with phone-OTP auth, slot-locked bookings, and a unified patient timeline. Built end-to-end after on-ground interviews with two local clinics.",
+    image_url: null, dark_image_url: null,
+    category: "Web App · Healthcare",
+    year: "2025",
+    tags: ["Next.js", "Supabase", "Razorpay", "TypeScript", "RLS"],
+    features: [
+      "Phone-OTP patient auth",
+      "Postgres-locked slot booking",
+      "Offline-tolerant intake forms",
+      "Role-based clinic dashboards",
+    ],
+    metrics: [
+      { value: "~70%", label: "Less paper time" },
+      { value: "200+", label: "Pilot bookings" },
+      { value: "0", label: "Double-bookings" },
+    ],
+    live_url: "https://maucare26.vercel.app",
+    logo: logoMauCare,
+    created_at: "2025-09-01",
+  },
+  {
+    id: "brainx",
+    title: "BrainX",
+    summary: "CBSE-aligned AI test platform with verified question generation and analytics.",
+    description:
+      "Generates and verifies CBSE Class 10 MCQs through a two-pass LLM pipeline, streams test sessions stateful-ly, and rolls up per-topic accuracy into a weak-area heatmap.",
+    image_url: null, dark_image_url: null,
+    category: "EdTech · AI",
+    year: "2025",
+    tags: ["Next.js", "FastAPI", "OpenAI", "LangChain", "Redis"],
+    features: [
+      "Blueprint-validated question generation",
+      "Two-pass answer verification",
+      "Cached generations (60% cost cut)",
+      "Topic-level weak-area heatmap",
+    ],
+    metrics: [
+      { value: "1k+", label: "Questions verified" },
+      { value: "60%", label: "LLM cost cut" },
+      { value: "<800ms", label: "Render time" },
+    ],
+    logo: logoBrainX,
+    created_at: "2025-06-01",
+  },
+];
 
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -44,75 +110,53 @@ const Projects = () => {
   useEffect(() => {
     const fetch = async () => {
       const { data } = await supabase.from("projects").select("*").order("created_at", { ascending: false });
-      if (data) setProjects(data as unknown as Project[]);
+      if (data && data.length > 0) {
+        // Hydrate db projects with defaults for missing fields
+        const hydrated = (data as any[]).map((p) => {
+          const fallback = defaults.find((d) => d.id === p.id);
+          return { ...fallback, ...p, features: p.features ?? fallback?.features ?? [], metrics: p.metrics ?? fallback?.metrics ?? [], summary: p.summary ?? fallback?.summary ?? p.description };
+        });
+        setProjects(hydrated);
+      }
     };
     fetch();
   }, []);
 
-  const defaults: Project[] = [
-    {
-      id: "unmask",
-      title: "UnMask",
-      description: "AI platform that detects misleading coaching-institute ads by analyzing topper claims and surfacing conflicts across institutes.",
-      image_url: null, dark_image_url: null,
-      category: "AI", tags: ["AI", "OCR", "Supabase"], created_at: "2026-01-01",
-    },
-    {
-      id: "mau-care",
-      title: "Mau Care",
-      description: "Booking + records platform for small clinics in Mau (UP). Phone-OTP auth, slot locking, offline-tolerant intake.",
-      image_url: null, dark_image_url: null,
-      category: "Web Development", tags: ["Next.js", "Supabase", "Healthcare"], created_at: "2025-09-01",
-    },
-    {
-      id: "brainx",
-      title: "BrainX",
-      description: "CBSE-aligned AI test platform with verified question generation, instant evaluation, and topic-level analytics.",
-      image_url: null, dark_image_url: null,
-      category: "AI", tags: ["AI", "EdTech", "FastAPI"], created_at: "2025-06-01",
-    },
-  ];
-
   const list = projects.length > 0 ? projects : defaults;
+
   const getImg = (p: Project) =>
     resolvedTheme === "dark" && p.dark_image_url ? p.dark_image_url : p.image_url;
-
-  // Featured + rest
-  const [featured, ...rest] = list;
 
   return (
     <section id="projects" className="py-24 md:py-32 relative">
       <div className="container mx-auto px-6 lg:px-12">
+        {/* Section header */}
         <motion.div
-          className="mb-12 flex items-end justify-between gap-6"
+          className="mb-16 md:mb-20 max-w-3xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="max-w-3xl">
-            <h2 className="text-xs font-medium text-primary uppercase tracking-[0.25em] mb-5">Selected Work</h2>
-            <p className="font-display text-3xl md:text-5xl font-bold tracking-tight">Featured projects.</p>
+          <div className="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full border border-border/50 bg-secondary/30 backdrop-blur-sm">
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
+            <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.2em]">
+              Selected Work
+            </span>
           </div>
-          <p className="hidden md:block text-sm text-muted-foreground max-w-xs">
-            A small sample of recent shipped work — click any tile for the full case study.
+          <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-5">
+            Real products. <br />
+            <span className="text-muted-foreground">Real outcomes.</span>
+          </h2>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            Three shipped projects — each solving a real problem, not a tutorial. Tap any card for the full case study.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5 auto-rows-[minmax(140px,auto)]">
-          {/* Featured large */}
-          {featured && (
-            <ProjectTile project={featured} img={getImg(featured)} icon={iconMap[featured.category] || iconMap.default} large delay={0} />
-          )}
-
-          {/* Two smaller */}
-          {rest.slice(0, 2).map((p, i) => (
-            <ProjectTile key={p.id} project={p} img={getImg(p)} icon={iconMap[p.category] || iconMap.default} delay={0.1 + i * 0.1} />
-          ))}
-
-          {/* Rest if any */}
-          {rest.slice(2).map((p, i) => (
-            <ProjectTile key={p.id} project={p} img={getImg(p)} icon={iconMap[p.category] || iconMap.default} delay={0.3 + i * 0.1} medium />
+        {/* Project list */}
+        <div className="space-y-8 md:space-y-12">
+          {list.map((p, i) => (
+            <ProjectCard key={p.id} project={p} img={getImg(p)} reverse={i % 2 === 1} delay={i * 0.1} />
           ))}
         </div>
       </div>
@@ -120,96 +164,161 @@ const Projects = () => {
   );
 };
 
-const ProjectTile = ({
+const ProjectCard = ({
   project,
   img,
-  icon: Icon,
-  large,
-  medium,
+  reverse,
   delay,
 }: {
   project: Project;
   img: string | null;
-  icon: any;
-  large?: boolean;
-  medium?: boolean;
+  reverse?: boolean;
   delay: number;
 }) => {
-  const span = large
-    ? "md:col-span-6 md:row-span-2 min-h-[440px]"
-    : medium
-    ? "md:col-span-3 min-h-[280px]"
-    : "md:col-span-3 min-h-[320px]";
-
   return (
-    <motion.div
-      className={`${span} col-span-1`}
-      initial={{ opacity: 0, y: 30 }}
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6, delay }}
+      className="group relative"
     >
-      <Link to={`/projects/${project.id}`} className="bento h-full group flex flex-col overflow-hidden">
-        {/* Image / logo area */}
-        <div className="relative flex-1 min-h-[160px] overflow-hidden bg-gradient-to-br from-secondary/40 via-card to-background grid-pattern">
-          {img ? (
-            <img
-              src={img}
-              alt={project.title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-          ) : logoMap[project.id] ? (
-            <div className="absolute inset-0 flex items-center justify-center p-8">
+      <div className="relative rounded-3xl border border-border/50 bg-card/40 backdrop-blur-xl overflow-hidden hover:border-primary/40 transition-all duration-500">
+        {/* Ambient glow */}
+        <div className="absolute -top-32 -right-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+        <div className={`grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-2 ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
+          {/* Visual side */}
+          <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:min-h-[460px] overflow-hidden bg-gradient-to-br from-secondary/60 via-card to-background border-b lg:border-b-0 lg:border-r border-border/40">
+            {/* Grid pattern */}
+            <div className="absolute inset-0 grid-pattern opacity-40" />
+            {/* Radial highlight */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,hsl(var(--primary)/0.18),transparent_60%)]" />
+
+            {img ? (
               <img
-                src={logoMap[project.id]}
-                alt={`${project.title} logo`}
-                className="max-h-[70%] max-w-[70%] object-contain drop-shadow-[0_8px_30px_hsl(var(--primary)/0.35)] transition-transform duration-700 group-hover:scale-105"
+                src={img}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 loading="lazy"
               />
-            </div>
-          ) : (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Icon className="w-12 h-12 text-primary/60" />
-            </div>
-          )}
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card/95 to-transparent" />
-        </div>
+            ) : project.logo ? (
+              <div className="absolute inset-0 flex items-center justify-center p-12">
+                <img
+                  src={project.logo}
+                  alt={`${project.title} logo`}
+                  className="max-h-[55%] max-w-[55%] object-contain drop-shadow-[0_12px_40px_hsl(var(--primary)/0.4)] transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+            ) : null}
 
-        {/* Meta */}
-        <div className="p-6 md:p-7 space-y-3">
-          <div className="flex items-start justify-between gap-4">
-            <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">
+            {/* Year badge */}
+            {project.year && (
+              <div className="absolute top-5 left-5 px-3 py-1 rounded-full bg-background/70 backdrop-blur-md border border-border/50">
+                <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-[0.18em]">
+                  {project.year}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Content side */}
+          <div className="lg:col-span-5 p-7 md:p-9 flex flex-col">
+            {/* Category */}
+            <p className="text-[10px] font-medium text-primary uppercase tracking-[0.22em] mb-4">
+              {project.category}
+            </p>
+
+            {/* Title */}
+            <h3 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3 group-hover:text-primary transition-colors">
               {project.title}
             </h3>
-            <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
-          </div>
-          <p className={`text-sm text-muted-foreground leading-relaxed ${large ? "" : "line-clamp-2"}`}>
-            {project.description}
-          </p>
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-            <div className="flex flex-wrap gap-1.5">
-              {project.tags.slice(0, 3).map((tag) => (
-                <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-secondary/70 border border-border/40 text-muted-foreground uppercase tracking-wider">
-                  {tag}
+
+            {/* Summary */}
+            <p className="text-sm md:text-[15px] text-foreground/80 leading-relaxed mb-4 font-medium">
+              {project.summary}
+            </p>
+
+            {/* Description */}
+            <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+              {project.description}
+            </p>
+
+            {/* Features */}
+            {project.features && project.features.length > 0 && (
+              <ul className="space-y-2 mb-6">
+                {project.features.slice(0, 4).map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-foreground/75">
+                    <span className="text-primary mt-1.5 w-1 h-1 rounded-full bg-primary shrink-0" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* Metrics */}
+            {project.metrics && project.metrics.length > 0 && (
+              <div className="grid grid-cols-3 gap-3 mb-6 p-4 rounded-2xl bg-secondary/40 border border-border/40">
+                {project.metrics.map((m) => (
+                  <div key={m.label} className="text-center">
+                    <p className="font-display text-lg md:text-xl font-bold text-foreground">{m.value}</p>
+                    <p className="text-[9px] md:text-[10px] text-muted-foreground uppercase tracking-wider mt-1 leading-tight">
+                      {m.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Tech chips */}
+            <div className="flex flex-wrap gap-1.5 mb-7">
+              {project.tags.slice(0, 6).map((t) => (
+                <span
+                  key={t}
+                  className="text-[10px] px-2.5 py-1 rounded-full bg-secondary/60 border border-border/40 text-muted-foreground uppercase tracking-wider font-medium"
+                >
+                  {t}
                 </span>
               ))}
             </div>
-            {liveLinks[project.id] && (
-              <a
-                href={liveLinks[project.id]}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1 text-[11px] uppercase tracking-wider text-primary hover:text-primary/80 font-medium"
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-2.5 mt-auto pt-2">
+              <Link
+                to={`/projects/${project.id}`}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-medium uppercase tracking-wider hover:bg-primary/90 transition-colors"
               >
-                Visit live <ExternalLink className="w-3 h-3" />
-              </a>
-            )}
+                Case study
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+              {project.live_url && (
+                <a
+                  href={project.live_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border/60 bg-background/40 text-foreground text-xs font-medium uppercase tracking-wider hover:border-primary/50 hover:text-primary transition-colors"
+                >
+                  Live demo
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
+              {project.github_url && (
+                <a
+                  href={project.github_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border/60 bg-background/40 text-foreground text-xs font-medium uppercase tracking-wider hover:border-primary/50 hover:text-primary transition-colors"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  GitHub
+                </a>
+              )}
+            </div>
           </div>
         </div>
-      </Link>
-    </motion.div>
+      </div>
+    </motion.article>
   );
 };
 
