@@ -59,42 +59,58 @@ Deno.serve(async (req) => {
         result = { projects };
         break;
 
-      case 'add_project':
+      case 'add_project': {
+        const payload = {
+          title: data.title,
+          summary: data.summary || null,
+          description: data.description,
+          image_url: data.image_url || null,
+          dark_image_url: data.dark_image_url || null,
+          logo_url: data.logo_url || null,
+          category: data.category || 'AI',
+          year: data.year || null,
+          live_url: data.live_url || null,
+          github_url: data.github_url || null,
+          tags: data.tags || [],
+          features: data.features || [],
+          metrics: data.metrics || [],
+        };
         const { data: newProject, error: addError } = await supabase
           .from('projects')
-          .insert([{
-            title: data.title,
-            description: data.description,
-            image_url: data.image_url,
-            dark_image_url: data.dark_image_url,
-            category: data.category || 'AI',
-            tags: data.tags || []
-          }])
+          .insert([payload])
           .select()
           .single();
-        
         if (addError) throw addError;
         result = { project: newProject };
         break;
+      }
 
-      case 'update_project':
+      case 'update_project': {
+        const payload = {
+          title: data.title,
+          summary: data.summary || null,
+          description: data.description,
+          image_url: data.image_url || null,
+          dark_image_url: data.dark_image_url || null,
+          logo_url: data.logo_url || null,
+          category: data.category,
+          year: data.year || null,
+          live_url: data.live_url || null,
+          github_url: data.github_url || null,
+          tags: data.tags || [],
+          features: data.features || [],
+          metrics: data.metrics || [],
+        };
         const { data: updatedProject, error: updateError } = await supabase
           .from('projects')
-          .update({
-            title: data.title,
-            description: data.description,
-            image_url: data.image_url,
-            dark_image_url: data.dark_image_url,
-            category: data.category,
-            tags: data.tags
-          })
+          .update(payload)
           .eq('id', data.id)
           .select()
           .single();
-        
         if (updateError) throw updateError;
         result = { project: updatedProject };
         break;
+      }
 
       case 'delete_project':
         const { error: deleteError } = await supabase

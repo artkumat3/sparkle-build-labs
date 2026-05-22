@@ -65,33 +65,54 @@ export type Database = {
           created_at: string
           dark_image_url: string | null
           description: string
+          features: string[]
+          github_url: string | null
           id: string
           image_url: string | null
+          live_url: string | null
+          logo_url: string | null
+          metrics: Json
+          summary: string | null
           tags: string[] | null
           title: string
           updated_at: string
+          year: string | null
         }
         Insert: {
           category?: string | null
           created_at?: string
           dark_image_url?: string | null
           description: string
+          features?: string[]
+          github_url?: string | null
           id?: string
           image_url?: string | null
+          live_url?: string | null
+          logo_url?: string | null
+          metrics?: Json
+          summary?: string | null
           tags?: string[] | null
           title: string
           updated_at?: string
+          year?: string | null
         }
         Update: {
           category?: string | null
           created_at?: string
           dark_image_url?: string | null
           description?: string
+          features?: string[]
+          github_url?: string | null
           id?: string
           image_url?: string | null
+          live_url?: string | null
+          logo_url?: string | null
+          metrics?: Json
+          summary?: string | null
           tags?: string[] | null
           title?: string
           updated_at?: string
+          year?: string | null
         }
         Relationships: []
       }
