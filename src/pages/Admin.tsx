@@ -122,22 +122,34 @@ const Admin = () => {
     setIsLoading(true);
 
     try {
+      // Parse metrics: each line "value | label"
+      const metrics = formData.metrics
+        .split('\n')
+        .map((l) => l.trim())
+        .filter(Boolean)
+        .map((l) => {
+          const [value, ...rest] = l.split('|').map((s) => s.trim());
+          return { value: value || '', label: rest.join(' | ') || '' };
+        });
+
       const projectData = {
         ...formData,
-        tags: formData.tags.split(',').map(t => t.trim()).filter(Boolean),
-        ...(editingProject && { id: editingProject.id })
+        tags: formData.tags.split(',').map((t) => t.trim()).filter(Boolean),
+        features: formData.features.split('\n').map((f) => f.trim()).filter(Boolean),
+        metrics,
+        ...(editingProject && { id: editingProject.id }),
       };
 
       await adminCall(editingProject ? 'update_project' : 'add_project', projectData);
-      
-      toast({ 
+
+      toast({
         title: editingProject ? "Project Updated" : "Project Added",
-        description: "Successfully saved."
+        description: "Successfully saved.",
       });
-      
+
       setIsDialogOpen(false);
       setEditingProject(null);
-      setFormData({ title: "", description: "", image_url: "", dark_image_url: "", category: "AI", tags: "" });
+      setFormData(emptyForm);
       loadData();
     } catch (error: any) {
       toast({ title: "Error", description: error.message, variant: "destructive" });
@@ -148,7 +160,7 @@ const Admin = () => {
 
   const handleDeleteProject = async (id: string) => {
     if (!confirm("Are you sure you want to delete this project?")) return;
-    
+
     try {
       await adminCall('delete_project', { id });
       toast({ title: "Project Deleted" });
@@ -162,11 +174,18 @@ const Admin = () => {
     setEditingProject(project);
     setFormData({
       title: project.title,
+      summary: project.summary || "",
       description: project.description,
       image_url: project.image_url || "",
       dark_image_url: project.dark_image_url || "",
+      logo_url: project.logo_url || "",
       category: project.category,
-      tags: project.tags.join(', ')
+      year: project.year || "",
+      live_url: project.live_url || "",
+      github_url: project.github_url || "",
+      tags: project.tags.join(', '),
+      features: (project.features || []).join('\n'),
+      metrics: (project.metrics || []).map((m) => `${m.value} | ${m.label}`).join('\n'),
     });
     setIsDialogOpen(true);
   };
