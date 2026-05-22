@@ -111,10 +111,18 @@ const Projects = () => {
     const fetch = async () => {
       const { data } = await supabase.from("projects").select("*").order("created_at", { ascending: false });
       if (data && data.length > 0) {
-        // Hydrate db projects with defaults for missing fields
         const hydrated = (data as any[]).map((p) => {
-          const fallback = defaults.find((d) => d.id === p.id);
-          return { ...fallback, ...p, features: p.features ?? fallback?.features ?? [], metrics: p.metrics ?? fallback?.metrics ?? [], summary: p.summary ?? fallback?.summary ?? p.description };
+          const fallback = defaults.find((d) => d.id === p.id || d.title.toLowerCase() === (p.title || "").toLowerCase());
+          return {
+            ...p,
+            summary: p.summary || fallback?.summary || p.description,
+            features: (p.features && p.features.length > 0) ? p.features : (fallback?.features ?? []),
+            metrics: (p.metrics && p.metrics.length > 0) ? p.metrics : (fallback?.metrics ?? []),
+            year: p.year || fallback?.year,
+            live_url: p.live_url || fallback?.live_url,
+            github_url: p.github_url || fallback?.github_url,
+            logo: p.logo_url || fallback?.logo,
+          };
         });
         setProjects(hydrated);
       }
