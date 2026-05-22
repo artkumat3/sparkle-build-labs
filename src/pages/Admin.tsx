@@ -293,54 +293,107 @@ const Admin = () => {
             <CardTitle>Projects</CardTitle>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <Button 
+                <Button
                   className="bg-primary"
                   onClick={() => {
                     setEditingProject(null);
-                    setFormData({ title: "", description: "", image_url: "", dark_image_url: "", category: "AI", tags: "" });
+                    setFormData(emptyForm);
                   }}
                 >
                   <Plus className="w-4 h-4 mr-2" /> Add Project
                 </Button>
               </DialogTrigger>
-              <DialogContent className="bg-card border-border">
+              <DialogContent className="bg-card border-border max-w-2xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle>{editingProject ? "Edit Project" : "Add New Project"}</DialogTitle>
                 </DialogHeader>
                 <form onSubmit={handleSubmitProject} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <Input
+                      placeholder="Project Title *"
+                      value={formData.title}
+                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                      required
+                    />
+                    <Input
+                      placeholder="Year (e.g. 2026)"
+                      value={formData.year}
+                      onChange={(e) => setFormData({ ...formData, year: e.target.value })}
+                    />
+                  </div>
+
                   <Input
-                    placeholder="Project Title"
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    required
+                    placeholder="One-line summary *"
+                    value={formData.summary}
+                    onChange={(e) => setFormData({ ...formData, summary: e.target.value })}
                   />
+
                   <Textarea
-                    placeholder="Project Description"
+                    placeholder="Full description *"
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     required
                     rows={4}
                   />
-                  <Input
-                    placeholder="Image URL - Light Theme (optional)"
-                    value={formData.image_url}
-                    onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <Input
+                      placeholder="Category (AI, Web Development, etc.)"
+                      value={formData.category}
+                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    />
+                    <Input
+                      placeholder="Tags (comma separated)"
+                      value={formData.tags}
+                      onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <Input
+                      placeholder="Live Demo URL"
+                      value={formData.live_url}
+                      onChange={(e) => setFormData({ ...formData, live_url: e.target.value })}
+                    />
+                    <Input
+                      placeholder="GitHub Repo URL"
+                      value={formData.github_url}
+                      onChange={(e) => setFormData({ ...formData, github_url: e.target.value })}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <Input
+                      placeholder="Logo URL (transparent)"
+                      value={formData.logo_url}
+                      onChange={(e) => setFormData({ ...formData, logo_url: e.target.value })}
+                    />
+                    <Input
+                      placeholder="Cover Image — Light"
+                      value={formData.image_url}
+                      onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
+                    />
+                    <Input
+                      placeholder="Cover Image — Dark"
+                      value={formData.dark_image_url}
+                      onChange={(e) => setFormData({ ...formData, dark_image_url: e.target.value })}
+                    />
+                  </div>
+
+                  <Textarea
+                    placeholder="Key features — one per line"
+                    value={formData.features}
+                    onChange={(e) => setFormData({ ...formData, features: e.target.value })}
+                    rows={4}
                   />
-                  <Input
-                    placeholder="Image URL - Dark Theme (optional)"
-                    value={formData.dark_image_url}
-                    onChange={(e) => setFormData({ ...formData, dark_image_url: e.target.value })}
+
+                  <Textarea
+                    placeholder={`Metrics — one per line, format: value | label\nExample:\n500+ | Ads scanned\n<5s | Per-ad processing`}
+                    value={formData.metrics}
+                    onChange={(e) => setFormData({ ...formData, metrics: e.target.value })}
+                    rows={4}
                   />
-                  <Input
-                    placeholder="Category (AI, Web Development, Automation)"
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  />
-                  <Input
-                    placeholder="Tags (comma separated)"
-                    value={formData.tags}
-                    onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
-                  />
+
                   <Button type="submit" className="w-full bg-primary" disabled={isLoading}>
                     {isLoading ? "Saving..." : (editingProject ? "Update Project" : "Add Project")}
                   </Button>
