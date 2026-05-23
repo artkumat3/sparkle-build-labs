@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Mail, ArrowUpRight } from "lucide-react";
+import { Send, Mail, ArrowUpRight, Github, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
