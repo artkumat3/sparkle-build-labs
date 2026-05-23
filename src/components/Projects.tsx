@@ -105,7 +105,6 @@ const defaults: Project[] = [
 
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
-  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const fetch = async () => {
@@ -132,8 +131,7 @@ const Projects = () => {
 
   const list = projects.length > 0 ? projects : defaults;
 
-  const getImg = (p: Project) =>
-    resolvedTheme === "dark" && p.dark_image_url ? p.dark_image_url : p.image_url;
+  const getImg = (p: Project) => p.image_url;
 
   return (
     <section id="projects" className="py-24 md:py-32 relative">
