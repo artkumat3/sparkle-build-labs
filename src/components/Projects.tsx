@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ArrowUpRight, ExternalLink, Github, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { useTheme } from "next-themes";
+
 import { motion } from "framer-motion";
 import logoUnmask from "@/assets/logo-unmask.png";
 import logoMauCare from "@/assets/logo-maucare.png";
