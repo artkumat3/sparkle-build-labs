@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
-import { useTheme } from "next-themes";
+import { Menu, X, ArrowUpRight, Github, Instagram } from "lucide-react";
 import logoDark from "@/assets/logo.png";
-import logoLight from "@/assets/logo-light.png";
 
 const navLinks = [
   { name: "About", href: "/#about" },
@@ -12,10 +9,14 @@ const navLinks = [
   { name: "Contact", href: "/#contact" },
 ];
 
+const socials = [
+  { name: "GitHub", href: "https://github.com/aryngpt", Icon: Github },
+  { name: "Instagram", href: "https://instagram.com/the.aryan.builds/", Icon: Instagram },
+];
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -23,8 +24,6 @@ const Header = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const currentLogo = resolvedTheme === "dark" ? logoLight : logoDark;
 
   return (
     <header
@@ -34,14 +33,13 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div
-          className={`flex items-center justify-between gap-4 rounded-full border border-border/40 bg-background/70 backdrop-blur-xl px-3 md:px-4 transition-all duration-300 ${
+          className={`flex items-center justify-between gap-4 rounded-full border border-border/60 bg-background/80 backdrop-blur-xl px-3 md:px-4 transition-all duration-300 ${
             scrolled ? "h-14 shadow-[0_10px_40px_-15px_hsl(var(--primary)/0.25)]" : "h-16"
           }`}
         >
-          {/* Logo */}
           <a href="/#home" className="flex items-center gap-2.5 pl-2 group">
             <img
-              src={currentLogo}
+              src={logoDark}
               alt="Aryan Gupta"
               className="w-8 h-8 transition-transform group-hover:rotate-6"
               width={32}
@@ -52,33 +50,40 @@ const Header = () => {
             </span>
           </a>
 
-          {/* Center pill nav */}
-          <nav className="hidden md:flex items-center gap-1 bg-secondary/40 rounded-full p-1 border border-border/30">
+          <nav className="hidden md:flex items-center gap-1 bg-secondary/50 rounded-full p-1 border border-border/40">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-background/60 transition-all tracking-wider uppercase px-4 py-2 rounded-full"
+                className="text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-background transition-all tracking-wider uppercase px-4 py-2 rounded-full"
               >
                 {link.name}
               </a>
             ))}
           </nav>
 
-          {/* Right cluster */}
-          <div className="hidden md:flex items-center gap-2 pr-1">
-            <ThemeToggle />
+          <div className="hidden md:flex items-center gap-1 pr-1">
+            {socials.map(({ name, href, Icon }) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={name}
+                className="w-9 h-9 inline-flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"
+              >
+                <Icon className="w-4 h-4" />
+              </a>
+            ))}
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors px-4 py-2 rounded-full"
+              className="ml-1 inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors px-4 py-2 rounded-full"
             >
               Hire me <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
-          {/* Mobile */}
           <div className="md:hidden flex items-center gap-1 pr-1">
-            <ThemeToggle />
             <button
               className="p-2 text-foreground"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -90,25 +95,39 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden mt-2 rounded-3xl border border-border/40 bg-background/90 backdrop-blur-xl p-4">
+          <div className="md:hidden mt-2 rounded-3xl border border-border/60 bg-background/95 backdrop-blur-xl p-4">
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors text-sm font-medium uppercase tracking-wider px-4 py-3 rounded-2xl"
+                  className="text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors text-sm font-medium uppercase tracking-wider px-4 py-3 rounded-2xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-1.5 text-xs uppercase tracking-wider font-semibold bg-primary text-primary-foreground px-4 py-3 rounded-2xl"
-              >
-                Hire me <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
+              <div className="flex items-center gap-2 px-2 pt-2">
+                {socials.map(({ name, href, Icon }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={name}
+                    className="w-10 h-10 inline-flex items-center justify-center rounded-full border border-border/60 text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                ))}
+                <a
+                  href="#contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 text-xs uppercase tracking-wider font-semibold bg-primary text-primary-foreground px-4 py-3 rounded-full"
+                >
+                  Hire me <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </nav>
           </div>
         )}
