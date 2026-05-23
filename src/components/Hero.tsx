@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, MapPin } from "lucide-react";
+import { ArrowRight, Sparkles, MapPin, Github, Instagram, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import aryanPhoto from "@/assets/aryan-photo.jpg";
