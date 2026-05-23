@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, MapPin } from "lucide-react";
+import { ArrowRight, Sparkles, MapPin, Github, Instagram, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import aryanPhoto from "@/assets/aryan-photo.jpg";
@@ -50,7 +50,7 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 pt-4">
+            <div className="flex flex-wrap items-center gap-3 pt-4">
               <a href="#projects">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full h-12 px-7 text-sm uppercase tracking-wider font-semibold">
                   View Case Studies <ArrowRight className="ml-2 w-4 h-4" />
@@ -61,6 +61,24 @@ const Hero = () => {
                   Hire Me
                 </Button>
               </a>
+              <div className="flex items-center gap-1.5 ml-1">
+                {[
+                  { href: "https://github.com/aryngpt", Icon: Github, label: "GitHub" },
+                  { href: "https://instagram.com/the.aryan.builds/", Icon: Instagram, label: "Instagram" },
+                  { href: "mailto:aryan-gupta@zohomail.in", Icon: Mail, label: "Email" },
+                ].map(({ href, Icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-11 h-11 inline-flex items-center justify-center rounded-full border border-border/60 bg-background/40 text-muted-foreground hover:text-primary hover:border-primary/50 hover:-translate-y-0.5 transition-all"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
 

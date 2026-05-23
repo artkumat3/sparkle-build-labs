@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Mail, ArrowUpRight } from "lucide-react";
+import { Send, Mail, ArrowUpRight, Github, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -68,7 +68,7 @@ const Contact = () => {
             </div>
           </motion.a>
 
-          {/* Status */}
+          {/* Socials */}
           <motion.div
             className="bento lg:col-span-5 p-8 flex flex-col justify-between min-h-[200px]"
             initial={{ opacity: 0, y: 20 }}
@@ -76,18 +76,33 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">Currently</p>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Elsewhere</p>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
                 </span>
-                <span className="text-foreground font-medium">Available</span>
+                <span className="text-foreground font-medium">Available for new work</span>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Open to internships, contract, and full-time roles.
-              </p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                <a
+                  href="https://github.com/aryngpt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border/60 bg-background/40 text-sm font-medium text-foreground/85 hover:text-primary hover:border-primary/50 transition-colors"
+                >
+                  <Github className="w-4 h-4" /> GitHub
+                </a>
+                <a
+                  href="https://instagram.com/the.aryan.builds/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border/60 bg-background/40 text-sm font-medium text-foreground/85 hover:text-primary hover:border-primary/50 transition-colors"
+                >
+                  <Instagram className="w-4 h-4" /> Instagram
+                </a>
+              </div>
             </div>
           </motion.div>
 
