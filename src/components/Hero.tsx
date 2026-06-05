@@ -15,10 +15,10 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen pt-28 lg:pt-32 pb-20 overflow-hidden aurora-bg"
+      className="relative min-h-screen pt-28 lg:pt-32 pb-20 overflow-hidden"
     >
       <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
-      <div className="absolute top-32 -left-32 w-[26rem] h-[26rem] rounded-full bg-primary/15 blur-[120px] animate-orb pointer-events-none" />
+      <div className="absolute top-32 -left-32 w-[26rem] h-[26rem] rounded-full bg-accent/20 blur-[120px] animate-orb pointer-events-none" />
       <div className="absolute bottom-0 -right-24 w-[30rem] h-[30rem] rounded-full bg-accent/15 blur-[140px] animate-orb pointer-events-none" style={{ animationDelay: "4s" }} />
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -82,9 +82,6 @@ const Hero = () => {
           >
             <p>
               Hi, I'm a developer from <span className="text-foreground font-medium">Mau, Uttar Pradesh</span> building production web apps and AI-powered automations — the kind of work that replaces spreadsheets, paper registers, and copy-paste workflows.
-            </p>
-            <p className="text-muted-foreground">
-              Recent things I've shipped: an OCR + LLM platform that audits coaching-institute ads (<span className="text-foreground font-medium">UnMask</span>), a clinic booking system for a tier-3 town (<span className="text-foreground font-medium">Mau Care</span>), and a CBSE AI test generator (<span className="text-foreground font-medium">BrainX</span>).
             </p>
             <p className="text-primary/90 italic">— vibe coder, not a real coder.</p>
           </motion.div>
