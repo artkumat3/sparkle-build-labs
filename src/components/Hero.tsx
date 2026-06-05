@@ -15,10 +15,10 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen pt-28 lg:pt-32 pb-20 overflow-hidden aurora-bg"
+      className="relative min-h-screen pt-28 lg:pt-32 pb-20 overflow-hidden"
     >
       <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
-      <div className="absolute top-32 -left-32 w-[26rem] h-[26rem] rounded-full bg-primary/15 blur-[120px] animate-orb pointer-events-none" />
+      <div className="absolute top-32 -left-32 w-[26rem] h-[26rem] rounded-full bg-accent/20 blur-[120px] animate-orb pointer-events-none" />
       <div className="absolute bottom-0 -right-24 w-[30rem] h-[30rem] rounded-full bg-accent/15 blur-[140px] animate-orb pointer-events-none" style={{ animationDelay: "4s" }} />
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
