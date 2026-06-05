@@ -66,6 +66,7 @@ export default {
       fontFamily: {
         sans: ["Manrope", "system-ui", "sans-serif"],
         display: ["Sora", "system-ui", "sans-serif"],
+        serif: ["'Instrument Serif'", "ui-serif", "Georgia", "serif"],
       },
       keyframes: {
         "accordion-down": {
