@@ -83,9 +83,6 @@ const Hero = () => {
             <p>
               Hi, I'm a developer from <span className="text-foreground font-medium">Mau, Uttar Pradesh</span> building production web apps and AI-powered automations — the kind of work that replaces spreadsheets, paper registers, and copy-paste workflows.
             </p>
-            <p className="text-muted-foreground">
-              Recent things I've shipped: an OCR + LLM platform that audits coaching-institute ads (<span className="text-foreground font-medium">UnMask</span>), a clinic booking system for a tier-3 town (<span className="text-foreground font-medium">Mau Care</span>), and a CBSE AI test generator (<span className="text-foreground font-medium">BrainX</span>).
-            </p>
             <p className="text-primary/90 italic">— vibe coder, not a real coder.</p>
           </motion.div>
 
