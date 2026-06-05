@@ -4,34 +4,34 @@
 
 @layer base {
   :root {
-    /* Light mode — soft indigo on near-white */
-    --background: 240 30% 97%;
-    --foreground: 240 45% 9%;
+    /* Soft pink → lavender aurora palette */
+    --background: 320 60% 98%;
+    --foreground: 260 30% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 45% 9%;
+    --card-foreground: 260 30% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 45% 9%;
+    --popover-foreground: 260 30% 14%;
 
-    --primary: 244 76% 59%;
+    --primary: 280 55% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 20% 93%;
-    --secondary-foreground: 240 45% 9%;
+    --secondary: 310 40% 95%;
+    --secondary-foreground: 260 30% 14%;
 
-    --muted: 240 15% 92%;
-    --muted-foreground: 240 10% 40%;
+    --muted: 300 30% 94%;
+    --muted-foreground: 270 12% 42%;
 
-    --accent: 244 70% 65%;
+    --accent: 330 75% 75%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 15% 88%;
-    --input: 240 15% 88%;
-    --ring: 244 76% 59%;
+    --border: 300 30% 88%;
+    --input: 300 30% 88%;
+    --ring: 280 55% 55%;
 
     --radius: 1rem;
 
@@ -39,13 +39,13 @@
     --success-foreground: 0 0% 100%;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 240 45% 9%;
-    --sidebar-primary: 244 76% 59%;
+    --sidebar-foreground: 260 30% 14%;
+    --sidebar-primary: 280 55% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 20% 93%;
-    --sidebar-accent-foreground: 240 45% 9%;
-    --sidebar-border: 240 15% 88%;
-    --sidebar-ring: 244 76% 59%;
+    --sidebar-accent: 310 40% 95%;
+    --sidebar-accent-foreground: 260 30% 14%;
+    --sidebar-border: 300 30% 88%;
+    --sidebar-ring: 280 55% 55%;
   }
 
   .dark {
