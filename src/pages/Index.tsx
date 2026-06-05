@@ -4,20 +4,20 @@ import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import Engineering from "@/components/Engineering";
 import Projects from "@/components/Projects";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SplashScreen from "@/components/SplashScreen";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SplashScreen />
       <Header />
       <Hero />
       <Marquee />
       <About />
       <Engineering />
       <Projects />
-      <Testimonials />
       <Contact />
       <Footer />
     </div>
