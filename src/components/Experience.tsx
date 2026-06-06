@@ -1,0 +1,165 @@
+import { motion } from "framer-motion";
+import { ArrowUpRight, Briefcase, Calendar, MapPin } from "lucide-react";
+import procbseLogo from "@/assets/procbse.png.asset.json";
+
+interface ExperienceItem {
+  company: string;
+  role: string;
+  period: string;
+  location: string;
+  url?: string;
+  logo: string;
+  summary: string;
+  highlights: string[];
+  stack: string[];
+}
+
+const experiences: ExperienceItem[] = [
+  {
+    company: "PROCBSE",
+    role: "Technical Head",
+    period: "Aug 2025 — Mar 2026",
+    location: "Remote · India",
+    url: "https://procbse.com",
+    logo: procbseLogo.url,
+    summary:
+      "Led the technical org behind a low-cost, high-yield exam-prep platform serving 50,000+ CBSE Class 10 & 12 students across India.",
+    highlights: [
+      "Owned the web platform end-to-end — Next.js storefront, checkout, and digital delivery for E-books and hardcopy bundles.",
+      "Shipped the “99 Guaranteed Questions” product flow, distilling a decade of past board papers into purchasable bundles.",
+      "Integrated Instagram, Telegram and YouTube funnels with the site to convert social traffic into paid customers.",
+      "Set up analytics, RLS-secured data, and a content pipeline used by topper-note creators and subject teams.",
+    ],
+    stack: ["Next.js", "TypeScript", "Supabase", "Tailwind", "Vercel", "Razorpay"],
+  },
+];
+
+const Experience = () => {
+  return (
+    <section
+      id="experience"
+      className="py-24 md:py-32 relative border-t border-border/30"
+    >
+      <div className="container mx-auto px-6 lg:px-12">
+        {/* Section header */}
+        <motion.div
+          className="mb-12 md:mb-16 max-w-3xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full border border-border/60 bg-secondary/40 backdrop-blur-sm">
+            <Briefcase className="w-3.5 h-3.5 text-primary" />
+            <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.2em]">
+              Experience
+            </span>
+          </div>
+          <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-5">
+            Where I've{" "}
+            <span className="font-italic-display font-normal text-primary">shipped</span>.
+          </h2>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            Roles where I owned product engineering — from the database up to
+            what the user actually sees.
+          </p>
+        </motion.div>
+
+        {/* Timeline */}
+        <div className="relative">
+          <div className="absolute left-5 md:left-7 top-2 bottom-2 w-px bg-gradient-to-b from-primary/40 via-border to-transparent" />
+
+          <div className="space-y-10">
+            {experiences.map((exp, i) => (
+              <motion.article
+                key={exp.company}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="relative pl-16 md:pl-20"
+              >
+                {/* Logo node */}
+                <div className="absolute left-0 top-1 w-10 h-10 md:w-14 md:h-14 rounded-2xl border border-border/60 bg-background/80 backdrop-blur-md shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.4)] overflow-hidden flex items-center justify-center">
+                  <img
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="rounded-3xl border border-border/60 bg-card/60 backdrop-blur-xl p-6 md:p-8 hover:border-primary/40 transition-colors group">
+                  {/* Header row */}
+                  <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap mb-1.5">
+                        <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
+                          {exp.role}
+                        </h3>
+                        <span className="text-muted-foreground">·</span>
+                        {exp.url ? (
+                          <a
+                            href={exp.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-primary font-semibold hover:underline underline-offset-4"
+                          >
+                            {exp.company}
+                            <ArrowUpRight className="w-3.5 h-3.5" />
+                          </a>
+                        ) : (
+                          <span className="text-primary font-semibold">{exp.company}</span>
+                        )}
+                      </div>
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                        <span className="inline-flex items-center gap-1.5">
+                          <Calendar className="w-3 h-3" /> {exp.period}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <MapPin className="w-3 h-3" /> {exp.location}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Summary */}
+                  <p className="text-sm md:text-[15px] text-foreground/85 leading-relaxed mb-5">
+                    {exp.summary}
+                  </p>
+
+                  {/* Highlights */}
+                  <ul className="space-y-2.5 mb-6">
+                    {exp.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="flex items-start gap-2.5 text-sm text-muted-foreground leading-relaxed"
+                      >
+                        <span className="mt-2 w-1 h-1 rounded-full bg-primary shrink-0" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Stack */}
+                  <div className="flex flex-wrap gap-1.5 pt-5 border-t border-border/40">
+                    {exp.stack.map((s) => (
+                      <span
+                        key={s}
+                        className="text-[10px] px-2.5 py-1 rounded-full bg-secondary/60 border border-border/40 text-muted-foreground uppercase tracking-wider font-medium"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Experience;
