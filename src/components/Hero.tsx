@@ -94,12 +94,12 @@ const Hero = () => {
             className="mt-9 flex flex-wrap items-center justify-center gap-3"
           >
             <a href="#projects">
-              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.5)]">
                 View work <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </a>
             <a href="#contact">
-              <Button size="lg" variant="outline" className="border-foreground/20 bg-background/50 hover:bg-background rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold">
+              <Button size="lg" variant="outline" className="border-primary/30 bg-background/60 text-foreground hover:bg-background hover:border-primary/60 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold">
                 Get in touch
               </Button>
             </a>

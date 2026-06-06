@@ -40,9 +40,6 @@ const About = () => {
             <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
               I'm a full-stack developer based in Mau, Uttar Pradesh. I build production web apps and AI-powered automations for small businesses, clinics, and early-stage startups — the kind of work that replaces spreadsheets, paper registers, and copy-paste workflows.
             </p>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Recent things I've shipped: an OCR + LLM platform that audits coaching-institute ads (<span className="text-foreground font-medium">UnMask</span>), a clinic booking + records system for a tier-3 town (<span className="text-foreground font-medium">Mau Care</span>), and a CBSE-aligned AI test generator (<span className="text-foreground font-medium">BrainX</span>).
-            </p>
           </motion.div>
 
           {/* Location + Status stacked */}
