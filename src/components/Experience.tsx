@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Briefcase, Calendar, MapPin } from "lucide-react";
-import procbseLogo from "@/assets/procbse.png.asset.json";
+import procbseLogo from "@/assets/procbse-logo.png.asset.json";
+import hustlersLogo from "@/assets/hustlers-logo.png.asset.json";
 
 interface ExperienceItem {
   company: string;
@@ -9,6 +10,7 @@ interface ExperienceItem {
   location: string;
   url?: string;
   logo: string;
+  logoBg?: string;
   summary: string;
   highlights: string[];
   stack: string[];
@@ -16,12 +18,29 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
+    company: "Hustlers",
+    role: "Founder",
+    period: "May 2026 — Present",
+    location: "Mau, Uttar Pradesh · India",
+    logo: hustlersLogo.url,
+    logoBg: "bg-white",
+    summary:
+      "Building Hustlers — a community and product studio for India's next wave of student builders, makers, and side-hustlers. Hustle starts here.",
+    highlights: [
+      "Founded the brand, identity, and go-to-market from zero — including web presence and community channels.",
+      "Curating cohorts, resources, and tooling that help students ship real products instead of theory.",
+      "Owning everything end-to-end: product, engineering, content, and growth.",
+    ],
+    stack: ["Next.js", "TypeScript", "Supabase", "Tailwind", "Vercel"],
+  },
+  {
     company: "PROCBSE",
     role: "Technical Head",
     period: "Aug 2025 — Mar 2026",
     location: "Remote · India",
     url: "https://procbse.com",
     logo: procbseLogo.url,
+    logoBg: "bg-black",
     summary:
       "Led the technical org behind a low-cost, high-yield exam-prep platform serving 50,000+ CBSE Class 10 & 12 students across India.",
     highlights: [
@@ -80,11 +99,11 @@ const Experience = () => {
                 className="relative pl-16 md:pl-20"
               >
                 {/* Logo node */}
-                <div className="absolute left-0 top-1 w-10 h-10 md:w-14 md:h-14 rounded-2xl border border-border/60 bg-background/80 backdrop-blur-md shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.4)] overflow-hidden flex items-center justify-center">
+                <div className={`absolute left-0 top-1 w-10 h-10 md:w-14 md:h-14 rounded-2xl border border-border/60 ${exp.logoBg ?? "bg-background/80"} backdrop-blur-md shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.4)] overflow-hidden flex items-center justify-center p-1.5`}>
                   <img
                     src={exp.logo}
                     alt={`${exp.company} logo`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     loading="lazy"
                   />
                 </div>
