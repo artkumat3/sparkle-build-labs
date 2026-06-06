@@ -99,11 +99,11 @@ const Experience = () => {
                 className="relative pl-16 md:pl-20"
               >
                 {/* Logo node */}
-                <div className="absolute left-0 top-1 w-10 h-10 md:w-14 md:h-14 rounded-2xl border border-border/60 bg-background/80 backdrop-blur-md shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.4)] overflow-hidden flex items-center justify-center">
+                <div className={`absolute left-0 top-1 w-10 h-10 md:w-14 md:h-14 rounded-2xl border border-border/60 ${exp.logoBg ?? "bg-background/80"} backdrop-blur-md shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.4)] overflow-hidden flex items-center justify-center p-1.5`}>
                   <img
                     src={exp.logo}
                     alt={`${exp.company} logo`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     loading="lazy"
                   />
                 </div>
