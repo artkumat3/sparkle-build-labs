@@ -117,24 +117,29 @@ const Experience = () => {
 
                   <CardTag
                     {...cardProps}
-                    className={`block rounded-3xl border border-border/60 bg-card/60 backdrop-blur-xl p-5 sm:p-6 md:p-8 transition-all duration-300 group ${
+                    {...(exp.url
+                      ? {
+                          "aria-label": `${exp.role} at ${exp.company} — opens ${exp.company} in a new tab`,
+                        }
+                      : {})}
+                    className={`block rounded-3xl border border-border/60 bg-card/60 backdrop-blur-xl p-5 sm:p-6 md:p-8 transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                       exp.url
-                        ? "hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-20px_hsl(var(--primary)/0.4)] cursor-pointer"
+                        ? "hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-20px_hsl(var(--primary)/0.4)] focus-visible:border-primary/50 cursor-pointer"
                         : "hover:border-primary/40"
                     }`}
                   >
                     {/* Header row */}
                     <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4 mb-4 sm:mb-5">
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 flex-wrap mb-1.5">
-                          <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-foreground">
+                          <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-foreground truncate max-w-full">
                             {exp.role}
                           </h3>
                           <span className="text-muted-foreground">·</span>
-                          <span className="inline-flex items-center gap-1 text-primary font-semibold">
-                            {exp.company}
+                          <span className="inline-flex items-center gap-1 text-primary font-semibold group-hover:underline underline-offset-4 decoration-primary/40 truncate max-w-full">
+                            <span className="truncate">{exp.company}</span>
                             {exp.url && (
-                              <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                              <ArrowUpRight className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5" />
                             )}
                           </span>
                         </div>
