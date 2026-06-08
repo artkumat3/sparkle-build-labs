@@ -100,13 +100,22 @@
   }
 
   body {
-    @apply text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased bg-background;
     font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
     background:
       radial-gradient(50% 40% at 10% 0%, hsl(330 90% 90% / 0.7), transparent 60%),
       radial-gradient(45% 40% at 95% 5%, hsl(265 90% 92% / 0.7), transparent 60%),
       radial-gradient(60% 50% at 50% 100%, hsl(280 80% 94% / 0.6), transparent 60%),
       linear-gradient(180deg, hsl(330 60% 98%), hsl(280 55% 97%));
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background:
+      radial-gradient(50% 40% at 10% 0%, hsl(260 70% 18% / 0.7), transparent 60%),
+      radial-gradient(45% 40% at 95% 5%, hsl(244 70% 20% / 0.7), transparent 60%),
+      radial-gradient(60% 50% at 50% 100%, hsl(280 70% 15% / 0.6), transparent 60%),
+      linear-gradient(180deg, hsl(240 45% 5%), hsl(250 45% 7%));
     background-attachment: fixed;
   }
 
