@@ -88,92 +88,100 @@ const Experience = () => {
         <div className="relative">
           <div className="absolute left-5 md:left-7 top-2 bottom-2 w-px bg-gradient-to-b from-primary/40 via-border to-transparent" />
 
-          <div className="space-y-10">
-            {experiences.map((exp, i) => (
-              <motion.article
-                key={exp.company}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="relative pl-16 md:pl-20"
-              >
-                {/* Logo node */}
-                <div className={`absolute left-0 top-1 w-10 h-10 md:w-14 md:h-14 rounded-2xl border border-border/60 ${exp.logoBg ?? "bg-background/80"} backdrop-blur-md shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.4)] overflow-hidden flex items-center justify-center p-1.5`}>
-                  <img
-                    src={exp.logo}
-                    alt={`${exp.company} logo`}
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
+          <div className="space-y-8 md:space-y-10">
+            {experiences.map((exp, i) => {
+              const CardTag: any = exp.url ? "a" : "div";
+              const cardProps = exp.url
+                ? { href: exp.url, target: "_blank", rel: "noopener noreferrer" }
+                : {};
+              return (
+                <motion.article
+                  key={exp.company}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="relative pl-14 sm:pl-16 md:pl-24"
+                >
+                  {/* Logo node */}
+                  <div
+                    className={`absolute left-0 top-1 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-2xl border border-border/60 ${exp.logoBg ?? "bg-background/80"} backdrop-blur-md shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.4)] overflow-hidden flex items-center justify-center p-1.5 z-10`}
+                  >
+                    <img
+                      src={exp.logo}
+                      alt={`${exp.company} logo`}
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
 
-                <div className="rounded-3xl border border-border/60 bg-card/60 backdrop-blur-xl p-6 md:p-8 hover:border-primary/40 transition-colors group">
-                  {/* Header row */}
-                  <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap mb-1.5">
-                        <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
-                          {exp.role}
-                        </h3>
-                        <span className="text-muted-foreground">·</span>
-                        {exp.url ? (
-                          <a
-                            href={exp.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-primary font-semibold hover:underline underline-offset-4"
-                          >
+                  <CardTag
+                    {...cardProps}
+                    className={`block rounded-3xl border border-border/60 bg-card/60 backdrop-blur-xl p-5 sm:p-6 md:p-8 transition-all duration-300 group ${
+                      exp.url
+                        ? "hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-20px_hsl(var(--primary)/0.4)] cursor-pointer"
+                        : "hover:border-primary/40"
+                    }`}
+                  >
+                    {/* Header row */}
+                    <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4 mb-4 sm:mb-5">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap mb-1.5">
+                          <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold text-foreground">
+                            {exp.role}
+                          </h3>
+                          <span className="text-muted-foreground">·</span>
+                          <span className="inline-flex items-center gap-1 text-primary font-semibold">
                             {exp.company}
-                            <ArrowUpRight className="w-3.5 h-3.5" />
-                          </a>
-                        ) : (
-                          <span className="text-primary font-semibold">{exp.company}</span>
-                        )}
-                      </div>
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                        <span className="inline-flex items-center gap-1.5">
-                          <Calendar className="w-3 h-3" /> {exp.period}
-                        </span>
-                        <span className="inline-flex items-center gap-1.5">
-                          <MapPin className="w-3 h-3" /> {exp.location}
-                        </span>
+                            {exp.url && (
+                              <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            )}
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                          <span className="inline-flex items-center gap-1.5">
+                            <Calendar className="w-3 h-3" /> {exp.period}
+                          </span>
+                          <span className="inline-flex items-center gap-1.5">
+                            <MapPin className="w-3 h-3" /> {exp.location}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Summary */}
-                  <p className="text-sm md:text-[15px] text-foreground/85 leading-relaxed mb-5">
-                    {exp.summary}
-                  </p>
+                    {/* Summary */}
+                    <p className="text-sm md:text-[15px] text-foreground/85 leading-relaxed mb-5">
+                      {exp.summary}
+                    </p>
 
-                  {/* Highlights */}
-                  <ul className="space-y-2.5 mb-6">
-                    {exp.highlights.map((h) => (
-                      <li
-                        key={h}
-                        className="flex items-start gap-2.5 text-sm text-muted-foreground leading-relaxed"
-                      >
-                        <span className="mt-2 w-1 h-1 rounded-full bg-primary shrink-0" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    {/* Highlights */}
+                    <ul className="space-y-2.5 mb-6">
+                      {exp.highlights.map((h) => (
+                        <li
+                          key={h}
+                          className="flex items-start gap-2.5 text-sm text-muted-foreground leading-relaxed"
+                        >
+                          <span className="mt-2 w-1 h-1 rounded-full bg-primary shrink-0" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                  {/* Stack */}
-                  <div className="flex flex-wrap gap-1.5 pt-5 border-t border-border/40">
-                    {exp.stack.map((s) => (
-                      <span
-                        key={s}
-                        className="text-[10px] px-2.5 py-1 rounded-full bg-secondary/60 border border-border/40 text-muted-foreground uppercase tracking-wider font-medium"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+                    {/* Stack */}
+                    <div className="flex flex-wrap gap-1.5 pt-5 border-t border-border/40">
+                      {exp.stack.map((s) => (
+                        <span
+                          key={s}
+                          className="text-[10px] px-2.5 py-1 rounded-full bg-secondary/60 border border-border/40 text-muted-foreground uppercase tracking-wider font-medium"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </CardTag>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </div>
