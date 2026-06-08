@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight, Github, Instagram } from "lucide-react";
 import logoDark from "@/assets/logo.png";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navLinks = [
   { name: "About", href: "/#about" },
