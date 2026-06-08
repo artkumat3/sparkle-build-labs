@@ -76,6 +76,7 @@ const Header = () => {
                 <Icon className="w-4 h-4" />
               </a>
             ))}
+            <ThemeToggle />
             <a
               href="#contact"
               className="ml-1 inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors px-4 py-2 rounded-full"
