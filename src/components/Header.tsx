@@ -86,6 +86,7 @@ const Header = () => {
           </div>
 
           <div className="md:hidden flex items-center gap-1 pr-1">
+            <ThemeToggle />
             <button
               className="p-2 text-foreground"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
