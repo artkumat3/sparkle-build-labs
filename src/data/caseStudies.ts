@@ -162,6 +162,11 @@ export const caseStudies: Record<string, CaseStudy> = {
       { metric: "<800ms", label: "Median question render time" },
     ],
     tags: ["AI", "EdTech", "FastAPI", "LangChain", "Next.js"],
+    gallery: [
+      { src: logoBrainX, caption: "Question generation pipeline" },
+      { src: logoBrainX, caption: "Test-taking interface" },
+      { src: logoBrainX, caption: "Weak-area heatmap analytics" },
+    ],
   },
 };
 
