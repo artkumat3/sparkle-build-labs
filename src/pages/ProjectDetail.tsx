@@ -236,6 +236,35 @@ const CaseStudyView = ({
       </div>
     </section>
 
+    {cs.gallery && cs.gallery.length > 0 && (
+      <section className="mb-12">
+        <SectionHeading>Gallery</SectionHeading>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {cs.gallery.map((g, i) => (
+            <figure
+              key={i}
+              className="group rounded-2xl border border-border/50 bg-secondary/30 overflow-hidden hover:border-primary/40 transition-colors"
+            >
+              <div className="aspect-[4/3] flex items-center justify-center p-8 bg-gradient-to-br from-secondary/60 via-card to-background relative">
+                <div className="absolute inset-0 grid-pattern opacity-30" />
+                <img
+                  src={g.src}
+                  alt={g.caption ?? `${cs.title} preview ${i + 1}`}
+                  loading="lazy"
+                  className="relative max-h-[60%] max-w-[60%] object-contain drop-shadow-[0_12px_40px_hsl(var(--primary)/0.35)] transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              {g.caption && (
+                <figcaption className="px-4 py-3 text-xs text-muted-foreground uppercase tracking-wider border-t border-border/40">
+                  {g.caption}
+                </figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
+
     {cs.links && cs.links.length > 0 && (
       <section className="mb-12">
         <SectionHeading>Links</SectionHeading>
