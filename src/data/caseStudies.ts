@@ -1,3 +1,7 @@
+import logoUnmask from "@/assets/logo-unmask.png";
+import logoMauCare from "@/assets/logo-maucare.png";
+import logoBrainX from "@/assets/logo-brainx.png";
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -14,6 +18,7 @@ export interface CaseStudy {
   outcomes: { metric: string; label: string }[];
   tags: string[];
   links?: { label: string; href: string }[];
+  gallery?: { src: string; caption?: string }[];
 }
 
 export const caseStudies: Record<string, CaseStudy> = {
@@ -61,6 +66,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     tags: ["AI", "OCR", "pgvector", "Civic Tech", "Supabase"],
     links: [{ label: "Visit live site", href: "https://un-mask.vercel.app/" }],
+    gallery: [
+      { src: logoUnmask, caption: "Brand mark" },
+      { src: logoUnmask, caption: "Conflict-detection dashboard" },
+      { src: logoUnmask, caption: "Auto-generated evidence pack" },
+    ],
   },
 
   "mau-care": {
@@ -107,6 +117,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     tags: ["Next.js", "Supabase", "Healthcare", "RLS", "Razorpay"],
     links: [{ label: "Visit live site", href: "https://maucare26.vercel.app" }],
+    gallery: [
+      { src: logoMauCare, caption: "Patient booking flow" },
+      { src: logoMauCare, caption: "Clinic dashboard" },
+      { src: logoMauCare, caption: "Patient timeline view" },
+    ],
   },
 
   brainx: {
