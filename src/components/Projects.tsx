@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { ArrowUpRight, ExternalLink, Github, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { motion, AnimatePresence } from "framer-motion";
 import logoUnmask from "@/assets/logo-unmask.png";
@@ -77,7 +77,14 @@ const defaults: Project[] = [
 
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeFilter = searchParams.get("filter") || "All";
+  const setActiveFilter = (f: string) => {
+    const next = new URLSearchParams(searchParams);
+    if (f === "All") next.delete("filter");
+    else next.set("filter", f);
+    setSearchParams(next, { replace: true });
+  };
 
   useEffect(() => {
     const fetch = async () => {
