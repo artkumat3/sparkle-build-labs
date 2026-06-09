@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { ArrowUpRight, ExternalLink, Github, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { motion, AnimatePresence } from "framer-motion";
 import logoUnmask from "@/assets/logo-unmask.png";
