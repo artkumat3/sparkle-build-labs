@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, Tag, ExternalLink } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useTheme } from "next-themes";
@@ -47,10 +48,9 @@ const ProjectDetail = () => {
     })();
   }, [id, staticCase]);
 
-  useEffect(() => {
-    const title = staticCase?.title ?? dbProject?.title;
-    if (title) document.title = `${title} — Aryan Gupta`;
-  }, [staticCase, dbProject]);
+  const seoTitle = staticCase?.title ?? dbProject?.title;
+  const seoDescription = staticCase?.tagline ?? dbProject?.description;
+  const seoUrl = `https://sparkle-build-labs.lovable.app/projects/${id}`;
 
   const cover =
     staticCase?.cover ??
@@ -62,6 +62,20 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {seoTitle && (
+        <Helmet>
+          <title>{`${seoTitle} — Aryan Gupta`}</title>
+          {seoDescription && <meta name="description" content={seoDescription} />}
+          <link rel="canonical" href={seoUrl} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={`${seoTitle} — Aryan Gupta`} />
+          {seoDescription && <meta property="og:description" content={seoDescription} />}
+          <meta property="og:url" content={seoUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={`${seoTitle} — Aryan Gupta`} />
+          {seoDescription && <meta name="twitter:description" content={seoDescription} />}
+        </Helmet>
+      )}
       <Header />
       <main className="container mx-auto px-6 lg:px-12 pt-32 pb-24 max-w-4xl">
         <Link
