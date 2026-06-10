@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, Tag, ExternalLink } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useTheme } from "next-themes";
@@ -47,10 +48,9 @@ const ProjectDetail = () => {
     })();
   }, [id, staticCase]);
 
-  useEffect(() => {
-    const title = staticCase?.title ?? dbProject?.title;
-    if (title) document.title = `${title} — Aryan Gupta`;
-  }, [staticCase, dbProject]);
+  const seoTitle = staticCase?.title ?? dbProject?.title;
+  const seoDescription = staticCase?.tagline ?? dbProject?.description;
+  const seoUrl = `https://sparkle-build-labs.lovable.app/projects/${id}`;
 
   const cover =
     staticCase?.cover ??
