@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Briefcase, Calendar, MapPin } from "lucide-react";
 import procbseLogo from "@/assets/procbse-logo.png.asset.json";
-import hustlersLogo from "@/assets/hustlers-logo.png.asset.json";
 
 interface ExperienceItem {
   company: string;
@@ -17,22 +16,6 @@ interface ExperienceItem {
 }
 
 const experiences: ExperienceItem[] = [
-  {
-    company: "Hustlers",
-    role: "Founder",
-    period: "May 2026 — Present",
-    location: "Mau, Uttar Pradesh · India",
-    logo: hustlersLogo.url,
-    logoBg: "bg-white",
-    summary:
-      "Building Hustlers — a community and product studio for India's next wave of student builders, makers, and side-hustlers. Hustle starts here.",
-    highlights: [
-      "Founded the brand, identity, and go-to-market from zero — including web presence and community channels.",
-      "Curating cohorts, resources, and tooling that help students ship real products instead of theory.",
-      "Owning everything end-to-end: product, engineering, content, and growth.",
-    ],
-    stack: ["Next.js", "TypeScript", "Supabase", "Tailwind", "Vercel"],
-  },
   {
     company: "PROCBSE",
     role: "Technical Head",
