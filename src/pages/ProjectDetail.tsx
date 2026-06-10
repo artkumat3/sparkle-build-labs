@@ -62,6 +62,20 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {seoTitle && (
+        <Helmet>
+          <title>{`${seoTitle} — Aryan Gupta`}</title>
+          {seoDescription && <meta name="description" content={seoDescription} />}
+          <link rel="canonical" href={seoUrl} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={`${seoTitle} — Aryan Gupta`} />
+          {seoDescription && <meta property="og:description" content={seoDescription} />}
+          <meta property="og:url" content={seoUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={`${seoTitle} — Aryan Gupta`} />
+          {seoDescription && <meta name="twitter:description" content={seoDescription} />}
+        </Helmet>
+      )}
       <Header />
       <main className="container mx-auto px-6 lg:px-12 pt-32 pb-24 max-w-4xl">
         <Link
