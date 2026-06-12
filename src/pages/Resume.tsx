@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Download, Printer, ArrowLeft, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
