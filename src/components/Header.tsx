@@ -79,9 +79,7 @@ const Header = () => {
             ))}
             <ThemeToggle />
             <a
-              href={resumeAsset.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/resume"
               className="ml-1 inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold border border-primary/40 text-foreground hover:bg-secondary/60 transition-colors px-4 py-2 rounded-full"
             >
               <FileText className="w-3.5 h-3.5" /> Resume
