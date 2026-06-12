@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight, Github, Instagram } from "lucide-react";
+import { Menu, X, ArrowUpRight, Github, Instagram, FileText } from "lucide-react";
 import logoDark from "@/assets/logo.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 const navLinks = [
   { name: "About", href: "/#about" },
@@ -77,6 +78,14 @@ const Header = () => {
               </a>
             ))}
             <ThemeToggle />
+            <a
+              href={resumeAsset.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-1 inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold border border-primary/40 text-foreground hover:bg-secondary/60 transition-colors px-4 py-2 rounded-full"
+            >
+              <FileText className="w-3.5 h-3.5" /> Resume
+            </a>
             <a
               href="#contact"
               className="ml-1 inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors px-4 py-2 rounded-full"

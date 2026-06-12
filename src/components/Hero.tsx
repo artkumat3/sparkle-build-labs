@@ -1,7 +1,8 @@
-import { ArrowRight, MapPin, Github, Instagram, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, MapPin, Github, Instagram, Mail, Sparkles, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import aryanPhoto from "@/assets/aryan-photo.jpg";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 const metrics = [
   { value: "6+", label: "Shipped projects" },
@@ -96,6 +97,11 @@ const Hero = () => {
             <a href="#projects">
               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.5)]">
                 View work <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </a>
+            <a href={resumeAsset.url} target="_blank" rel="noopener noreferrer" download>
+              <Button size="lg" variant="outline" className="border-primary/30 bg-background/60 text-foreground hover:bg-background hover:border-primary/60 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold">
+                <Download className="mr-2 w-4 h-4" /> Resume
               </Button>
             </a>
             <a href="#contact">
