@@ -99,6 +99,11 @@ const Hero = () => {
                 View work <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </a>
+            <a href={resumeAsset.url} target="_blank" rel="noopener noreferrer" download>
+              <Button size="lg" variant="outline" className="border-primary/30 bg-background/60 text-foreground hover:bg-background hover:border-primary/60 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold">
+                <Download className="mr-2 w-4 h-4" /> Resume
+              </Button>
+            </a>
             <a href="#contact">
               <Button size="lg" variant="outline" className="border-primary/30 bg-background/60 text-foreground hover:bg-background hover:border-primary/60 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold">
                 Get in touch
