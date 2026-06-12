@@ -1,7 +1,8 @@
-import { ArrowRight, MapPin, Github, Instagram, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, MapPin, Github, Instagram, Mail, Sparkles, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import aryanPhoto from "@/assets/aryan-photo.jpg";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 const metrics = [
   { value: "6+", label: "Shipped projects" },
