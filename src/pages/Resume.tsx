@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Download, Printer, ArrowLeft, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -25,6 +26,17 @@ const Resume = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>Resume — Aryan Gupta, Full-stack & AI Developer</title>
+        <meta
+          name="description"
+          content="View and download Aryan Gupta's resume — full-stack developer building AI-powered web apps with React, Next.js, Python, and Supabase."
+        />
+        <link rel="canonical" href="https://sparkle-build-labs.lovable.app/resume" />
+        <meta property="og:url" content="https://sparkle-build-labs.lovable.app/resume" />
+        <meta property="og:title" content="Resume — Aryan Gupta" />
+        <meta property="og:description" content="View and download Aryan Gupta's resume." />
+      </Helmet>
       <Header />
       <main className="flex-1 pt-28 pb-16">
         <div className="container mx-auto px-6 lg:px-12">
