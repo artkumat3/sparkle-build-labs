@@ -17,7 +17,7 @@ const SplashScreen = () => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] aurora-bg flex items-center justify-center"
+          className="fixed inset-0 z-[100] bg-background aurora-bg-themed flex items-center justify-center"
         >
           <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
           <div className="relative flex flex-col items-center gap-6">
