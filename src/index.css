@@ -241,6 +241,20 @@
       radial-gradient(70% 60% at 50% 100%, hsl(244 80% 92% / 0.9), transparent 60%),
       linear-gradient(180deg, hsl(330 60% 97%), hsl(250 60% 97%));
   }
+  .aurora-bg-themed {
+    background:
+      radial-gradient(60% 50% at 15% 20%, hsl(var(--primary) / 0.25), transparent 60%),
+      radial-gradient(55% 50% at 85% 15%, hsl(var(--accent) / 0.2), transparent 60%),
+      radial-gradient(70% 60% at 50% 100%, hsl(var(--primary) / 0.18), transparent 60%),
+      hsl(var(--background));
+  }
+  .light .aurora-bg-themed {
+    background:
+      radial-gradient(60% 50% at 15% 20%, hsl(var(--primary) / 0.18), transparent 60%),
+      radial-gradient(55% 50% at 85% 15%, hsl(var(--accent) / 0.15), transparent 60%),
+      radial-gradient(70% 60% at 50% 100%, hsl(244 90% 92% / 0.9), transparent 60%),
+      linear-gradient(180deg, hsl(240 60% 98%), hsl(244 55% 97%));
+  }
   .font-italic-display {
     font-family: 'Instrument Serif', ui-serif, Georgia, serif;
     font-style: italic;
