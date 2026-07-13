@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight, Github, Instagram, FileText } from "lucide-react";
+import { Menu, X, ArrowUpRight, Github, FileText } from "lucide-react";
 import logoDark from "@/assets/logo.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
@@ -13,8 +13,8 @@ const navLinks = [
 
 const socials = [
   { name: "GitHub", href: "https://github.com/aryngpt", Icon: Github },
-  { name: "Instagram", href: "https://instagram.com/the.aryan.builds/", Icon: Instagram },
 ];
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

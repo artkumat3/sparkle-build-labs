@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, Mail, ArrowUpRight, Github, Instagram } from "lucide-react";
+import { Send, Mail, ArrowUpRight, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -94,15 +94,8 @@ const Contact = () => {
                 >
                   <Github className="w-4 h-4" /> GitHub
                 </a>
-                <a
-                  href="https://instagram.com/the.aryan.builds/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border/60 bg-background/40 text-sm font-medium text-foreground/85 hover:text-primary hover:border-primary/50 transition-colors"
-                >
-                  <Instagram className="w-4 h-4" /> Instagram
-                </a>
               </div>
+
             </div>
           </motion.div>
 
