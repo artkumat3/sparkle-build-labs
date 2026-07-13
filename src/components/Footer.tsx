@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUp, Github, Instagram, Mail } from "lucide-react";
+import { ArrowUp, Github, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,9 +13,9 @@ const Footer = () => {
 
   const socials = [
     { name: "GitHub", href: "https://github.com/aryngpt", Icon: Github },
-    { name: "Instagram", href: "https://instagram.com/the.aryan.builds/", Icon: Instagram },
     { name: "Email", href: "mailto:aryan-gupta@zohomail.in", Icon: Mail },
   ];
+
 
   const scrollToTop = () =>
     window.scrollTo({ top: 0, behavior: "smooth" });
