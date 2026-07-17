@@ -70,7 +70,7 @@ const NotFound = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-primary/30 bg-background/60 text-foreground hover:bg-background hover:border-primary/60 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold"
+                  className="border-primary/40 bg-background/60 text-foreground hover:bg-primary/10 hover:border-primary/70 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold"
                 >
                   View work
                 </Button>
@@ -79,7 +79,7 @@ const NotFound = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-primary/30 bg-background/60 text-foreground hover:bg-background hover:border-primary/60 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold"
+                  className="border-primary/40 bg-background/60 text-foreground hover:bg-primary/10 hover:border-primary/70 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold"
                 >
                   <Mail className="mr-2 w-4 h-4" /> Contact
                 </Button>
