@@ -205,7 +205,7 @@ const CaseStudyView = ({
               {col.items.map((item) => (
                 <span
                   key={item}
-                  className="text-xs px-3 py-1 rounded-full border border-border text-muted-foreground"
+                  className="text-xs px-3 py-1 rounded-full border border-border/60 bg-secondary/40 text-muted-foreground"
                 >
                   {item}
                 </span>
@@ -306,7 +306,7 @@ const CaseStudyView = ({
         {cs.tags.map((tag) => (
           <span
             key={tag}
-            className="text-xs px-3 py-1.5 rounded-full border border-border text-muted-foreground"
+            className="text-xs px-3 py-1.5 rounded-full border border-border/60 bg-secondary/40 text-muted-foreground"
           >
             {tag}
           </span>
@@ -372,7 +372,7 @@ const DbProjectView = ({
           {p.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-3 py-1.5 rounded-full border border-border text-muted-foreground"
+              className="text-xs px-3 py-1.5 rounded-full border border-border/60 bg-secondary/40 text-muted-foreground"
             >
               {tag}
             </span>
