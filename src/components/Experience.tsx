@@ -23,7 +23,7 @@ const experiences: ExperienceItem[] = [
     location: "Remote · India",
     url: "https://procbse.com",
     logo: procbseLogo.url,
-    logoBg: "bg-black",
+    logoBg: "bg-white",
     summary:
       "Led the technical org behind a low-cost, high-yield exam-prep platform serving 50,000+ CBSE Class 10 & 12 students across India.",
     highlights: [
@@ -87,16 +87,18 @@ const Experience = () => {
                   className="relative pl-14 sm:pl-16 md:pl-24"
                 >
                   {/* Logo node */}
-                  <div
-                    className={`absolute left-0 top-1 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-2xl border border-border/60 ${exp.logoBg ?? "bg-background/80"} backdrop-blur-md shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.4)] overflow-hidden flex items-center justify-center p-1.5 z-10`}
+                  <motion.div
+                    whileHover={{ scale: 1.08, rotate: -3 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                    className={`absolute left-0 top-1 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-2xl border border-border/60 ${exp.logoBg ?? "bg-background/80"} backdrop-blur-md shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.4)] overflow-hidden flex items-center justify-center z-10`}
                   >
                     <img
                       src={exp.logo}
                       alt={`${exp.company} logo`}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
                       loading="lazy"
                     />
-                  </div>
+                  </motion.div>
 
                   <CardTag
                     {...cardProps}
