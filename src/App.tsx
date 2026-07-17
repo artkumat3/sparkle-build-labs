@@ -7,7 +7,7 @@ import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import ProjectDetail from "./pages/ProjectDetail";
-import Resume from "./pages/Resume";
+
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
