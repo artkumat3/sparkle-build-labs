@@ -23,7 +23,7 @@ const experiences: ExperienceItem[] = [
     location: "Remote · India",
     url: "https://procbse.com",
     logo: procbseLogo.url,
-    logoBg: "bg-black",
+    logoBg: "bg-white",
     summary:
       "Led the technical org behind a low-cost, high-yield exam-prep platform serving 50,000+ CBSE Class 10 & 12 students across India.",
     highlights: [
