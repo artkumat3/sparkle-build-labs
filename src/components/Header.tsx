@@ -76,20 +76,14 @@ const Header = () => {
               >
                 <Icon className="w-4 h-4" />
               </a>
-            ))}
             <ThemeToggle />
-            <a
-              href="/resume"
-              className="ml-1 inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold border border-primary/40 text-foreground hover:bg-secondary/60 transition-colors px-4 py-2 rounded-full"
-            >
-              <FileText className="w-3.5 h-3.5" /> Resume
-            </a>
             <a
               href="#contact"
               className="ml-1 inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors px-4 py-2 rounded-full"
             >
               Hire me <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
+
           </div>
 
           <div className="md:hidden flex items-center gap-1 pr-1">
