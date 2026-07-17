@@ -89,16 +89,12 @@ const Hero = () => {
                 View work <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </a>
-            <a href="/resume">
-              <Button size="lg" variant="outline" className="border-primary/40 bg-background/60 text-foreground hover:bg-primary/10 hover:border-primary/70 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold">
-                <Download className="mr-2 w-4 h-4" /> Resume
-              </Button>
-            </a>
             <a href="#contact">
-              <Button size="lg" variant="outline" className="border-border bg-background/60 text-foreground hover:bg-secondary rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold">
+              <Button size="lg" variant="outline" className="border-primary/40 bg-background/60 text-foreground hover:bg-primary/10 hover:border-primary/70 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold">
                 Get in touch
               </Button>
             </a>
+
           </motion.div>
 
           {/* Socials */}
