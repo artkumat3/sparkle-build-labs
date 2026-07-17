@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight, Github, FileText } from "lucide-react";
+import { Menu, X, ArrowUpRight, Github } from "lucide-react";
 import logoDark from "@/assets/logo.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import resumeAsset from "@/assets/resume.pdf.asset.json";
+
 
 const navLinks = [
   { name: "About", href: "/#about" },
