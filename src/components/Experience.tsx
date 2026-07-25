@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Briefcase, Calendar, MapPin } from "lucide-react";
-import procbseLogo from "@/assets/procbse-logo.png.asset.json";
+const procbseLogo = { url: "https://i.ibb.co/2bM6Q4W/procbse-logo.png" };
 
 interface ExperienceItem {
   company: string;
