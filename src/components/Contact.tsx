@@ -31,6 +31,7 @@ const contactSchema = z.object({
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [honeypot, setHoneypot] = useState("");
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -49,8 +50,31 @@ const Contact = () => {
     setIsLoading(true);
     try {
       const { name, email, message } = result.data;
-      const { error } = await supabase.from("contact_submissions").insert([{ name, email, message }]);
-      if (error) throw error;
+      const { data, error } = await supabase.functions.invoke("validate-contact", {
+        body: { name, email, message, website: honeypot },
+      });
+      if (error) {
+        // Try to extract server-provided message (e.g. spam_detected)
+        let serverMsg = "Something went wrong.";
+        try {
+          const ctx = (error as { context?: Response }).context;
+          if (ctx) {
+            const body = await ctx.json();
+            if (body?.message) serverMsg = body.message;
+            else if (body?.error === "spam_detected") serverMsg = "Your message looks automated. Please rewrite it and try again.";
+          }
+        } catch { /* ignore */ }
+        toast({ title: "Couldn't send", description: serverMsg, variant: "destructive" });
+        return;
+      }
+      if (data && (data as { error?: string }).error) {
+        toast({
+          title: "Couldn't send",
+          description: (data as { message?: string }).message ?? "Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
       toast({ title: "Message sent!", description: "I'll get back to you soon." });
       setFormData({ name: "", email: "", message: "" });
     } catch {
