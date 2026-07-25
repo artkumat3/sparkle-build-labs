@@ -6,6 +6,27 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(2, { message: "Please enter your name" })
+    .max(100, { message: "Name must be under 100 characters" })
+    .regex(/^[^<>]*$/, { message: "Name contains invalid characters" }),
+  email: z
+    .string()
+    .trim()
+    .email({ message: "Please enter a valid email" })
+    .max(255, { message: "Email must be under 255 characters" }),
+  message: z
+    .string()
+    .trim()
+    .min(10, { message: "Message must be at least 10 characters" })
+    .max(2000, { message: "Message must be under 2000 characters" })
+    .regex(/^(?!.*<\s*script)/i, { message: "Message contains disallowed content" }),
+});
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,9 +35,20 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      toast({
+        title: "Please fix the form",
+        description: result.error.issues[0]?.message ?? "Invalid input",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsLoading(true);
     try {
-      const { error } = await supabase.from("contact_submissions").insert([formData]);
+      const { error } = await supabase.from("contact_submissions").insert([result.data]);
       if (error) throw error;
       toast({ title: "Message sent!", description: "I'll get back to you soon." });
       setFormData({ name: "", email: "", message: "" });
