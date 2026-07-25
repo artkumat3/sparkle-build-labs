@@ -165,6 +165,17 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-5">
+              {/* Honeypot – must stay empty. Hidden from real users. */}
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-10000px", width: 1, height: 1, opacity: 0 }}
+              />
               <div className="space-y-2">
                 <label htmlFor="name" className="text-xs uppercase tracking-widest text-muted-foreground">Name</label>
                 <Input
