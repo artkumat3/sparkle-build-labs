@@ -173,6 +173,7 @@ const Projects = () => {
 };
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+  const [logoFailed, setLogoFailed] = useState(false);
   const stagger = index % 3 === 1 ? "md:mt-16" : index % 3 === 2 ? "lg:mt-8" : "";
   return (
     <motion.article
@@ -190,13 +191,18 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       >
         <div className="plate aspect-[4/5] mb-6 flex items-center justify-center transition-colors duration-500 group-hover:border-primary/60">
           <div className="absolute inset-0 grid-pattern opacity-30" />
-          {project.logo && (
+          {project.logo && !logoFailed ? (
             <img
               src={project.logo}
               alt={`${project.title} logo`}
+              onError={() => setLogoFailed(true)}
               className="relative w-24 h-24 object-contain transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
+          ) : (
+            <span className="relative font-display text-6xl text-primary/70 transition-transform duration-500 group-hover:scale-105">
+              {project.title.charAt(0)}
+            </span>
           )}
           <div className="absolute inset-x-0 bottom-0 p-6 flex items-end justify-between bg-gradient-to-t from-background to-transparent">
             <span className="text-[10px] uppercase tracking-[0.24em] text-primary">
