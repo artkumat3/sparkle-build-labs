@@ -114,7 +114,7 @@ const Projects = () => {
   const filters = useMemo(() => {
     const buckets = new Set<string>();
     list.forEach((p) => {
-      const first = (p.category || "").split("·")[0]?.trim();
+      const first = (p.category || "").split(/[·,]/)[0]?.trim();
       if (first) buckets.add(first);
     });
     return ["All", ...Array.from(buckets)];
@@ -205,7 +205,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             </span>
           )}
           <div className="absolute inset-x-0 bottom-0 p-6 flex items-end justify-between bg-gradient-to-t from-background to-transparent">
-            <span className="text-[10px] uppercase tracking-[0.24em] text-primary">
+            <span className="text-[10px] uppercase tracking-[0.24em] text-primary line-clamp-1 pr-3">
               {project.category}
             </span>
             <span className="text-[10px] font-mono text-muted-foreground">{project.year}</span>
