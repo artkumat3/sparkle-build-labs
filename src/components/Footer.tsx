@@ -1,65 +1,43 @@
 import { motion } from "framer-motion";
-import { ArrowUp, Github, Mail } from "lucide-react";
+import { Github, Mail, ArrowUp } from "lucide-react";
+
+const navLinks = [
+  { name: "About", href: "/#about" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Work", href: "/#projects" },
+  { name: "Contact", href: "/#contact" },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  const navLinks = [
-    { name: "About", href: "/#about" },
-    { name: "Experience", href: "/#experience" },
-    { name: "Work", href: "/#projects" },
-    { name: "Contact", href: "/#contact" },
-  ];
-
-  const socials = [
-    { name: "GitHub", href: "https://github.com/aryngpt", Icon: Github },
-    { name: "Email", href: "mailto:aryan-gupta@zohomail.in", Icon: Mail },
-  ];
-
-
-  const scrollToTop = () =>
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <motion.footer
-      className="border-t border-border/40 mt-10"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
+      className="border-t border-border"
     >
-      <div className="container mx-auto px-6 lg:px-12 py-16">
-        <div className="grid md:grid-cols-3 gap-10 mb-12">
-          <div className="space-y-4">
-            <p className="text-lg font-semibold text-foreground">Aryan Gupta</p>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Full-stack developer shipping AI-powered web apps and automations that remove the boring work.
+      <div className="edition py-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          <div className="md:col-span-5">
+            <p className="font-display text-4xl text-primary leading-none">arynk</p>
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-xs">
+              Aryan Gupta — full-stack developer shipping AI-powered web apps
+              and automations that remove the boring work.
             </p>
-            <div className="flex items-center gap-2 pt-1">
-              {socials.map(({ name, href, Icon }) => (
-                <a
-                  key={name}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  aria-label={name}
-                  className="w-10 h-10 inline-flex items-center justify-center rounded-full border border-border/60 bg-secondary/40 text-muted-foreground hover:text-primary hover:border-primary/50 hover:-translate-y-0.5 transition-all"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
           </div>
 
-          <div className="space-y-3">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest">Sitemap</p>
+          <div className="md:col-span-3">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
+              Sections
+            </p>
             <ul className="space-y-2">
               {navLinks.map((l) => (
                 <li key={l.name}>
-                  <a
-                    href={l.href}
-                    className="text-sm text-foreground/80 hover:text-primary transition-colors"
-                  >
+                  <a href={l.href} className="text-sm text-foreground/75 hover:text-primary transition-colors">
                     {l.name}
                   </a>
                 </li>
@@ -67,28 +45,41 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="space-y-3">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest">Reach out</p>
-            <a
-              href="mailto:aryan-gupta@zohomail.in"
-              className="text-sm text-foreground/80 hover:text-primary transition-colors block"
-            >
-              aryan-gupta@zohomail.in
-            </a>
+          <div className="md:col-span-4">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
+              Elsewhere
+            </p>
+            <div className="flex items-center gap-5">
+              <a
+                href="https://github.com/aryngpt"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-primary transition-colors"
+              >
+                <Github className="w-4 h-4" /> GitHub
+              </a>
+              <a
+                href="mailto:aryan-gupta@zohomail.in"
+                aria-label="Email"
+                className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-primary transition-colors"
+              >
+                <Mail className="w-4 h-4" /> Email
+              </a>
+            </div>
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mt-2"
+              className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-muted-foreground hover:text-primary transition-colors"
             >
               Back to top <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 pt-8 border-t border-border/40">
-          <p className="text-xs text-muted-foreground">
-            Designed and developed by <span className="text-foreground">Aryan Gupta</span>
-          </p>
-          <p className="text-xs text-muted-foreground">© {currentYear} — All rights reserved</p>
+        <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row items-center justify-between gap-3 text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
+          <span>© {currentYear} Aryan Gupta</span>
+          <span>Mau, Uttar Pradesh · India</span>
+          <span>Built with precision</span>
         </div>
       </div>
     </motion.footer>
