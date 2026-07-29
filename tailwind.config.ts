@@ -64,9 +64,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
-        display: ["'Libre Baskerville'", "ui-serif", "Georgia", "serif"],
-        serif: ["'Libre Baskerville'", "ui-serif", "Georgia", "serif"],
+        sans: ["'Work Sans'", "system-ui", "sans-serif"],
+        display: ["'Instrument Serif'", "ui-serif", "Georgia", "serif"],
+        serif: ["'Instrument Serif'", "ui-serif", "Georgia", "serif"],
         mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
       },
       keyframes: {
