@@ -55,7 +55,7 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="hidden sm:inline-flex w-8 h-8 items-center justify-center rounded-md sticker sticker-blue"
+              className="hidden sm:inline-flex w-9 h-9 items-center justify-center rounded-md border border-foreground/15 bg-[hsl(var(--sticker-blue))] text-white shadow-[2px_2px_0_hsl(var(--foreground)/0.14)]"
             >
               <Github className="w-4 h-4" />
             </a>
