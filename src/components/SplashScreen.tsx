@@ -25,7 +25,7 @@ const SplashScreen = () => {
               initial={{ y: 14, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-6xl md:text-7xl text-primary leading-none"
+              className="blocky text-5xl md:text-6xl text-foreground leading-none"
             >
               arynk
             </motion.p>
@@ -39,9 +39,9 @@ const SplashScreen = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground"
+              className="font-hand text-xl text-muted-foreground"
             >
-              Aryan Gupta · Portfolio Vol. 03
+              Aryan Gupta
             </motion.p>
           </div>
 

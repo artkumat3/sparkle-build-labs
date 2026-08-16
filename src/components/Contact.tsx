@@ -109,13 +109,13 @@ const Contact = () => {
               href="https://github.com/aryngpt"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-primary transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-foreground/80 transition-colors"
             >
               <Github className="w-4 h-4" /> GitHub
             </a>
             <a
               href="mailto:aryan-gupta@zohomail.in"
-              className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-primary transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-foreground/80 transition-colors"
             >
               <Mail className="w-4 h-4" /> Email
             </a>
@@ -129,10 +129,10 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="group block font-display text-3xl md:text-5xl lg:text-6xl text-foreground hover:text-primary transition-colors underline decoration-border decoration-1 underline-offset-[14px] hover:decoration-primary break-all"
+            className="group block font-display text-3xl md:text-5xl lg:text-6xl text-foreground hover:text-foreground/80 transition-colors underline decoration-border decoration-1 underline-offset-[14px] hover:decoration-primary break-all"
           >
             aryan-gupta@zohomail.in
-            <ArrowUpRight className="inline w-8 h-8 ml-2 align-top text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+            <ArrowUpRight className="inline w-8 h-8 ml-2 align-top text-foreground/80 opacity-0 group-hover:opacity-100 transition-opacity" />
           </motion.a>
 
           <motion.form

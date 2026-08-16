@@ -30,7 +30,7 @@ const Engineering = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xs font-medium text-primary uppercase tracking-[0.25em] mb-5">Engineering</h2>
+          <h2 className="text-xs font-medium text-foreground/80 uppercase tracking-[0.25em] mb-5">Engineering</h2>
           <p className="font-display text-3xl md:text-5xl font-bold leading-tight tracking-tight">
             How I build, and what I build with.
           </p>
@@ -47,7 +47,7 @@ const Engineering = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <div className="w-11 h-11 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-                <p.icon className="w-5 h-5 text-primary" />
+                <p.icon className="w-5 h-5 text-foreground/80" />
               </div>
               <div className="space-y-2 flex-1">
                 <h3 className="font-display text-xl font-semibold text-foreground">{p.title}</h3>
