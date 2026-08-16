@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Github, Mail } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navLinks = [
+  { name: "Home", href: "/#home" },
   { name: "About", href: "/#about" },
   { name: "Experience", href: "/#experience" },
   { name: "Work", href: "/#projects" },
-  { name: "Contact", href: "/#contact" },
 ];
 
 const Header = () => {
@@ -21,56 +20,53 @@ const Header = () => {
   }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-50 bg-background/85 backdrop-blur-md transition-shadow ${
-        scrolled ? "border-b border-border" : "border-b border-transparent"
-      }`}
-    >
+    <header className="sticky top-0 z-50 pt-3 pb-2">
       <div className="edition">
-        <div className="flex items-baseline justify-between gap-6 py-5">
-          <a href="/#home" className="flex items-baseline gap-3 group">
-            <span className="font-display text-3xl md:text-4xl tracking-tight text-primary leading-none">
-              arynk
-            </span>
-            <span className="hidden sm:block text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-              Portfolio Vol. 03
-            </span>
-          </a>
-
-          <nav className="hidden md:flex items-baseline gap-8">
-            {navLinks.map((link) => (
+        <div
+          className={`sheet flex items-center justify-between gap-4 px-3 py-2 ${
+            scrolled ? "shadow-md" : ""
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <a
+              href="/#home"
+              className="blocky text-lg leading-none px-2 py-1 rounded-md bg-foreground text-background"
+            >
+              a
+            </a>
+            {navLinks.map((link, i) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground hover:text-primary transition-colors"
+                className={`hidden md:inline-flex px-3 py-1.5 rounded-md text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors ${
+                  i === 0
+                    ? "sticker sticker-yellow"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
               >
                 {link.name}
               </a>
             ))}
-            <span className="w-px h-4 bg-border" />
+          </div>
+
+          <div className="flex items-center gap-2">
             <a
               href="https://github.com/aryngpt"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="hidden sm:inline-flex w-8 h-8 items-center justify-center rounded-md sticker sticker-blue"
             >
               <Github className="w-4 h-4" />
             </a>
             <a
-              href="mailto:aryan-gupta@zohomail.in"
-              aria-label="Email"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              href="/#contact"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-foreground/25 text-[11px] font-semibold uppercase tracking-[0.14em] hover:bg-secondary transition-colors"
             >
-              <Mail className="w-4 h-4" />
+              <Mail className="w-3.5 h-3.5" /> Contact
             </a>
-            <ThemeToggle />
-          </nav>
-
-          <div className="md:hidden flex items-center gap-1">
-            <ThemeToggle />
             <button
-              className="p-2 text-foreground"
+              className="md:hidden p-2 text-foreground"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -80,35 +76,17 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <nav className="md:hidden border-t border-border py-4 flex flex-col">
-            {navLinks.map((link) => (
+          <nav className="sheet md:hidden mt-2 p-3 flex flex-col gap-1">
+            {[...navLinks, { name: "Contact", href: "/#contact" }].map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="py-3 text-sm uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors border-b border-border/50 last:border-0"
+                className="px-3 py-2.5 rounded-md text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <div className="flex items-center gap-4 pt-4">
-              <a
-                href="https://github.com/aryngpt"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href="mailto:aryan-gupta@zohomail.in"
-                aria-label="Email"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-              </a>
-            </div>
           </nav>
         )}
       </div>
