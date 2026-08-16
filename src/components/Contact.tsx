@@ -129,7 +129,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="group block font-display text-3xl md:text-5xl lg:text-6xl text-foreground hover:text-foreground/80 transition-colors underline decoration-border decoration-1 underline-offset-[14px] hover:decoration-primary break-all"
+            className="group block display-xl text-2xl md:text-3xl lg:text-4xl text-foreground hover:text-foreground/70 transition-colors underline decoration-border decoration-1 underline-offset-[10px] break-words"
           >
             aryan-gupta@zohomail.in
             <ArrowUpRight className="inline w-8 h-8 ml-2 align-top text-foreground/80 opacity-0 group-hover:opacity-100 transition-opacity" />
