@@ -127,9 +127,10 @@ const Projects = () => {
   return (
     <section id="projects" className="edition py-20 md:py-28 scroll-mt-24">
       <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
-        <h2 className="font-display text-5xl md:text-7xl text-foreground">
-          Selected <span className="italic text-primary">Works</span>
-        </h2>
+        <div>
+          <p className="font-hand text-2xl text-muted-foreground">stuff I made</p>
+          <h2 className="display-xl text-4xl md:text-6xl text-foreground">Selected Works</h2>
+        </div>
         <div className="hidden md:block h-px flex-1 mx-8 bg-border" />
         <p className="text-xs font-mono text-muted-foreground">
           {String(filtered.length).padStart(3, "0")} projects
@@ -147,8 +148,8 @@ const Projects = () => {
               aria-pressed={active}
               className={`text-[11px] uppercase tracking-[0.24em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background ${
                 active
-                  ? "text-primary underline underline-offset-8 decoration-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "sticker sticker-yellow"
+                  : "px-3 py-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary"
               }`}
             >
               {f}
@@ -189,8 +190,11 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         aria-label={`Open ${project.title} case study`}
         className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
       >
-        <div className="plate aspect-[4/5] mb-6 flex items-center justify-center transition-colors duration-500 group-hover:border-primary/60">
-          <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="polaroid mb-5 transition-transform duration-300 group-hover:-translate-y-1">
+          <span className={`tape ${index % 2 ? "tape-blue" : ""} left-4 -top-3`} />
+          <span className="absolute right-4 -top-3 tape rotate-[5deg]" />
+          <div className="plate aspect-[4/5] flex items-center justify-center">
+          <div className="absolute inset-0 grid-pattern opacity-40" />
           {project.logo && !logoFailed ? (
             <img
               src={project.logo}
@@ -200,21 +204,25 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               loading="lazy"
             />
           ) : (
-            <span className="relative font-display text-6xl text-primary/70 transition-transform duration-500 group-hover:scale-105">
+            <span className="relative blocky text-6xl text-foreground/70 transition-transform duration-500 group-hover:scale-105">
               {project.title.charAt(0)}
             </span>
           )}
-          <div className="absolute inset-x-0 bottom-0 p-6 flex items-end justify-between bg-gradient-to-t from-background to-transparent">
-            <span className="text-[10px] uppercase tracking-[0.24em] text-primary line-clamp-1 pr-3">
+          <div className="absolute inset-x-0 bottom-0 p-4 flex items-end justify-between bg-gradient-to-t from-card to-transparent">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/70 line-clamp-1 pr-3">
               {project.category}
             </span>
             <span className="text-[10px] font-mono text-muted-foreground">{project.year}</span>
           </div>
+          </div>
+          <p className="font-hand text-lg text-muted-foreground mt-2 text-center">
+            project {String(index + 1).padStart(2, "0")}
+          </p>
         </div>
 
-        <h3 className="font-display text-3xl text-foreground hover-italic mb-2 flex items-center gap-2">
+        <h3 className="display-xl text-2xl md:text-3xl text-foreground mb-2 flex items-center gap-2">
           {project.title}
-          <ArrowUpRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+          <ArrowUpRight className="w-4 h-4 text-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed">{project.summary}</p>
       </Link>
@@ -225,7 +233,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             href={project.live_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-foreground/80 hover:text-primary transition-colors"
+            className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-foreground/80 hover:text-foreground transition-colors"
           >
             <ExternalLink className="w-3.5 h-3.5" /> Live
           </a>
@@ -235,14 +243,14 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             href={project.github_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-foreground/80 hover:text-primary transition-colors"
+            className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-foreground/80 hover:text-foreground transition-colors"
           >
             <Github className="w-3.5 h-3.5" /> Code
           </a>
         )}
         <Link
           to={`/projects/${project.id}`}
-          className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors"
+          className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors"
         >
           Case study
         </Link>

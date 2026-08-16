@@ -23,7 +23,7 @@ const Footer = () => {
       <div className="edition py-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-5">
-            <p className="font-display text-4xl text-primary leading-none">arynk</p>
+            <p className="blocky text-3xl text-foreground leading-none">arynk</p>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-xs">
               Aryan Gupta — full-stack developer shipping AI-powered web apps
               and automations that remove the boring work.
@@ -31,13 +31,13 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-3">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
+            <p className="font-hand text-xl text-muted-foreground mb-3">
               Sections
             </p>
             <ul className="space-y-2">
               {navLinks.map((l) => (
                 <li key={l.name}>
-                  <a href={l.href} className="text-sm text-foreground/75 hover:text-primary transition-colors">
+                  <a href={l.href} className="text-sm text-foreground/75 hover:text-foreground transition-colors">
                     {l.name}
                   </a>
                 </li>
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-4">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
+            <p className="font-hand text-xl text-muted-foreground mb-3">
               Elsewhere
             </p>
             <div className="flex items-center gap-5">
@@ -55,21 +55,21 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-primary transition-colors"
+                className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-foreground transition-colors"
               >
                 <Github className="w-4 h-4" /> GitHub
               </a>
               <a
                 href="mailto:aryan-gupta@zohomail.in"
                 aria-label="Email"
-                className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-primary transition-colors"
+                className="inline-flex items-center gap-2 text-sm text-foreground/75 hover:text-foreground transition-colors"
               >
                 <Mail className="w-4 h-4" /> Email
               </a>
             </div>
             <button
               onClick={scrollToTop}
-              className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-muted-foreground hover:text-primary transition-colors"
+              className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-muted-foreground hover:text-foreground transition-colors"
             >
               Back to top <ArrowUp className="w-3.5 h-3.5" />
             </button>

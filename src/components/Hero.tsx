@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
 
 const stack = ["React", "Next.js", "TypeScript", "Python", "Supabase", "LLMs"];
 
@@ -11,68 +11,75 @@ const facts = [
 
 const Hero = () => {
   return (
-    <section id="home" className="edition pt-16 md:pt-24 pb-24 md:pb-32">
+    <section id="home" className="edition pt-10 md:pt-16 pb-20 md:pb-28 text-center">
       <motion.div
-        initial={{ opacity: 0, y: 18 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12"
+        transition={{ duration: 0.6 }}
+        className="relative mx-auto max-w-3xl"
       >
-        <div className="lg:col-span-8">
-          <p className="kicker mb-6">Full-stack developer · AI automation</p>
-          <h1 className="display-xl text-6xl md:text-8xl lg:text-[8.5rem] text-foreground">
-            <span className="italic">Aryan Gupta</span>
-            <span className="block not-italic text-primary">Full-Stack + AI.</span>
+        <p className="font-hand text-2xl text-muted-foreground">my name is</p>
+
+        <div className="relative mt-3 flex items-center justify-center">
+          <span className="sticker sticker-green absolute -left-2 md:left-0 -top-4 rotate-[-8deg] hidden sm:inline-flex">
+            made things
+          </span>
+          <span className="sticker sticker-yellow absolute -right-2 md:right-0 -top-4 rotate-[7deg] hidden sm:inline-flex">
+            sweat the details
+          </span>
+          <h1 className="name-box blocky text-5xl md:text-7xl lg:text-8xl leading-none">
+            ARYNK
           </h1>
         </div>
 
-        <div className="lg:col-span-4 flex flex-col justify-end">
-          <p className="text-lg md:text-xl leading-relaxed text-foreground/80 border-l border-primary pl-6 mb-8">
-            I build production web apps and AI-powered automations — the kind of
-            work that replaces spreadsheets, paper registers and copy-paste
-            workflows.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {stack.map((s) => (
-              <span key={s} className="chip">
-                {s}
-              </span>
-            ))}
-          </div>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <span className="sticker sticker-yellow rotate-[-2deg]">Full-stack developer</span>
+          <span className="chip">
+            <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--sticker-green))] mr-2" />
+            Open to new work and good problems
+          </span>
+          <span className="sticker sticker-blue rotate-[2deg]">Mau, IN</span>
+        </div>
+
+        <h2 className="display-xl mt-10 text-3xl md:text-5xl text-foreground">
+          I build software that gets
+          <br className="hidden sm:block" /> out of your way.
+        </h2>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a href="#contact" className="btn-ink">
+            <Mail className="w-4 h-4" /> Contact me
+          </a>
+          <a
+            href="#projects"
+            className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Selected works
+            <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+          </a>
         </div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="mt-16 md:mt-24 border-t border-border pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6"
+        transition={{ duration: 0.6, delay: 0.25 }}
+        className="mt-16 md:mt-20 sheet p-6 md:p-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left"
       >
         {facts.map((f) => (
           <div key={f.k}>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-2">
-              {f.k}
-            </p>
-            <p className="text-sm text-foreground/85">{f.v}</p>
+            <p className="font-hand text-lg text-muted-foreground">{f.k}</p>
+            <p className="text-sm font-medium text-foreground/85">{f.v}</p>
           </div>
         ))}
+        <div className="sm:col-span-3 flex flex-wrap gap-2 pt-2 border-t border-border mt-2">
+          {stack.map((s) => (
+            <span key={s} className="chip">
+              {s}
+            </span>
+          ))}
+        </div>
       </motion.div>
-
-      <div className="mt-12 flex flex-wrap items-center gap-8">
-        <a
-          href="#projects"
-          className="group inline-flex items-center gap-3 text-sm uppercase tracking-[0.22em] text-foreground hover:text-primary transition-colors"
-        >
-          Selected works
-          <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-        </a>
-        <a
-          href="#contact"
-          className="text-sm uppercase tracking-[0.22em] text-muted-foreground hover:text-primary transition-colors underline decoration-border underline-offset-8 hover:decoration-primary"
-        >
-          Get in touch
-        </a>
-      </div>
     </section>
   );
 };

@@ -65,8 +65,10 @@ export default {
       },
       fontFamily: {
         sans: ["'Work Sans'", "system-ui", "sans-serif"],
-        display: ["'Instrument Serif'", "ui-serif", "Georgia", "serif"],
-        serif: ["'Instrument Serif'", "ui-serif", "Georgia", "serif"],
+        display: ["'Space Grotesk'", "'Work Sans'", "system-ui", "sans-serif"],
+        hand: ["'Caveat'", "'Comic Sans MS'", "cursive"],
+        blocky: ["'Archivo Black'", "'Work Sans'", "sans-serif"],
+        serif: ["'Space Grotesk'", "system-ui", "sans-serif"],
         mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
       },
       keyframes: {

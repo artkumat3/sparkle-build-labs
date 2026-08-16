@@ -82,13 +82,13 @@ const Experience = () => {
                       />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-mono text-primary mb-2">
+                      <p className="text-xs font-mono text-foreground/80 mb-2">
                         {exp.period} · {exp.location}
                       </p>
-                      <h3 className="font-display text-3xl md:text-4xl text-foreground hover-italic inline-flex items-center gap-2">
+                      <h3 className="display-xl text-2xl md:text-3xl text-foreground hover-italic inline-flex items-center gap-2">
                         {exp.company} {exp.role}
                         {exp.url && (
-                          <ArrowUpRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <ArrowUpRight className="w-5 h-5 text-foreground/80 opacity-0 group-hover:opacity-100 transition-opacity" />
                         )}
                       </h3>
                       <p className="mt-4 text-foreground/70 leading-relaxed max-w-xl">
@@ -97,7 +97,7 @@ const Experience = () => {
                       <ul className="mt-6 space-y-3 max-w-xl">
                         {exp.highlights.map((h) => (
                           <li key={h} className="flex gap-3 text-sm text-foreground/70 leading-relaxed">
-                            <span className="text-primary mt-0.5">—</span>
+                            <span className="text-foreground/80 mt-0.5">—</span>
                             <span>{h}</span>
                           </li>
                         ))}
