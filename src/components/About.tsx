@@ -1,72 +1,40 @@
-import { motion } from "framer-motion";
+import SectionHead from "@/components/atelier/SectionHead";
 
-const skillGroups = [
-  { label: "Frontend", cls: "sticker-yellow", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
-  { label: "Backend", cls: "sticker-green", items: ["Python", "FastAPI", "Supabase", "Postgres"] },
-  { label: "AI", cls: "sticker-pink", items: ["OpenAI", "LangChain", "pgvector", "OCR"] },
-  { label: "Infra", cls: "sticker-blue", items: ["Vercel", "Docker", "Edge Fns", "Resend"] },
+const matrix = [
+  { k: "Geographic Base", v: "Mau, Uttar Pradesh (IST / UTC+5:30)" },
+  { k: "Execution Cycle", v: "Concept to Production in Days" },
+  { k: "Reliability Standard", v: "99.9% Uptime with Row-Level Security" },
 ];
 
-const About = () => {
-  return (
-    <section id="about" className="edition py-16 md:py-24 scroll-mt-24">
-      <p className="font-hand text-2xl text-muted-foreground mb-6">about me!</p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.6 }}
-        className="sheet relative p-6 md:p-12 pt-12"
-      >
-        <span className="tape left-1/2 -translate-x-1/2 -top-3" />
-        <div className="mx-auto max-w-3xl text-center">
-          <span className="chip mb-6">what's up</span>
-          <p className="font-hand text-2xl md:text-3xl leading-snug text-foreground">
-            I'm a developer who gets a little too excited about making
-            complicated things feel simple. I care about the small details, the
-            edge cases everyone forgets, and shipping work that genuinely makes
-            someone's day easier.
-          </p>
+const About = () => (
+  <section id="about" className="edition py-28 md:py-40 scroll-mt-16">
+    <SectionHead no="02" label="The Editorial Prologue" title="Distance from reality is the real bug." />
+    <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+      <blockquote className="lg:col-span-6 font-serif italic font-light text-2xl md:text-3xl leading-snug text-foreground/90 border-l border-primary pl-6">
+        “Most software fails not in its algorithms, but in its distance from reality. I build where the register sits,
+        where the WhatsApp chat breaks, and where the human needs an answer in milliseconds.”
+      </blockquote>
+      <div className="lg:col-span-6 space-y-6 text-muted-foreground">
+        <p>
+          I work from Mau, Uttar Pradesh, building digital systems for clinics, regional businesses and early startups.
+          Every project begins on the ground — studying the physical ledger, the messy chat thread, the manual bottleneck
+          that quietly eats hours every day.
+        </p>
+        <p>
+          Then I ship the minimal viable slice straight to production, in days rather than quarters. AI is functional
+          plumbing inside the system — never the marketing pitch.
+        </p>
+      </div>
+    </div>
+    <dl className="mt-20 grid md:grid-cols-3 border-t border-border">
+      {matrix.map((m) => (
+        <div key={m.k} className="py-8 md:pr-8 border-b md:border-b-0 md:border-r last:border-r-0 border-border md:pl-8 first:md:pl-0">
+          <dt className="meta text-primary mb-3">{m.k}</dt>
+          <dd className="text-foreground">{m.v}</dd>
         </div>
-
-        <div className="mt-10 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Based in Mau, Uttar Pradesh, I build production software for small
-            businesses, clinics and early-stage startups. Most of my work starts
-            on the ground — watching how a register, a WhatsApp thread or a
-            spreadsheet is actually used — and ends as something live.
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            My approach: ship the smallest thing that proves the idea, in
-            production, in days. AI is a tool inside the product, never the
-            pitch. Open to internships, contract work and full-time roles.
-          </p>
-        </div>
-
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {skillGroups.map((g, i) => (
-            <motion.div
-              key={g.label}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-            >
-              <span className={`sticker ${g.cls} rotate-[-2deg]`}>{g.label}</span>
-              <ul className="mt-3 space-y-1.5 pl-1">
-                {g.items.map((item) => (
-                  <li key={item} className="text-sm text-foreground/75">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </section>
-  );
-};
+      ))}
+    </dl>
+  </section>
+);
 
 export default About;

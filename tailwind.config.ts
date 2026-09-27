@@ -64,12 +64,12 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["'Work Sans'", "system-ui", "sans-serif"],
-        display: ["'Space Grotesk'", "'Work Sans'", "system-ui", "sans-serif"],
-        hand: ["'Caveat'", "'Comic Sans MS'", "cursive"],
-        blocky: ["'Archivo Black'", "'Work Sans'", "sans-serif"],
-        serif: ["'Space Grotesk'", "system-ui", "sans-serif"],
-        mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
+        sans: ["'Inter Tight'", "system-ui", "sans-serif"],
+        display: ["'Syne'", "'Inter Tight'", "sans-serif"],
+        serif: ["'Playfair Display'", "Georgia", "serif"],
+        mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
+        hand: ["'Playfair Display'", "serif"],
+        blocky: ["'Syne'", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
