@@ -1,87 +1,61 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import Magnetic from "@/components/atelier/Magnetic";
 
-const stack = ["React", "Next.js", "TypeScript", "Python", "Supabase", "LLMs"];
+const words = ["Aryan", "Kumar", "Gupta"];
+const ease = [0.16, 1, 0.3, 1] as const;
 
-const facts = [
-  { k: "Based", v: "Mau, Uttar Pradesh · IST" },
-  { k: "Focus", v: "Full-stack + AI automation" },
-  { k: "Status", v: "Available for work" },
-];
+const Hero = () => (
+  <section id="home" className="relative min-h-[100svh] pt-16 flex flex-col">
+    <div className="edition relative flex-1 flex flex-col justify-center py-16">
+      <p className="meta text-primary absolute top-8 left-5 md:left-10 lg:left-16">System Architect &amp; AI Automation</p>
+      <p className="meta text-muted-foreground absolute top-8 right-5 md:right-10 lg:right-16 hidden sm:block">Mau, Uttar Pradesh · IST</p>
 
-const Hero = () => {
-  return (
-    <section id="home" className="edition pt-10 md:pt-16 pb-20 md:pb-28 text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
+      <h1 className="display-hero text-foreground">
+        {words.map((w, i) => (
+          <span key={w} className="block overflow-hidden">
+            <motion.span
+              className="block"
+              initial={{ y: "110%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1.1, delay: 0.15 + i * 0.12, ease }}
+            >
+              {w}
+            </motion.span>
+          </span>
+        ))}
+      </h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative mx-auto max-w-3xl"
+        transition={{ duration: 1, delay: 0.7, ease }}
+        className="font-serif italic font-light text-2xl md:text-4xl text-foreground/85 mt-8 max-w-2xl"
       >
-        <p className="font-hand text-2xl text-muted-foreground">my name is</p>
-
-        <div className="relative mt-3 flex items-center justify-center">
-          <span className="sticker sticker-green absolute -left-2 md:left-0 -top-4 rotate-[-8deg] hidden sm:inline-flex">
-            made things
-          </span>
-          <span className="sticker sticker-yellow absolute -right-2 md:right-0 -top-4 rotate-[7deg] hidden sm:inline-flex">
-            sweat the details
-          </span>
-          <h1 className="name-box blocky text-5xl md:text-7xl lg:text-8xl leading-none">
-            ARYNK
-          </h1>
-        </div>
-
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-          <span className="sticker sticker-yellow rotate-[-2deg]">Full-stack developer</span>
-          <span className="chip">
-            <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--sticker-green))] mr-2" />
-            Open to new work and good problems
-          </span>
-          <span className="sticker sticker-blue rotate-[2deg]">Mau, IN</span>
-        </div>
-
-        <h2 className="display-xl mt-10 text-3xl md:text-5xl text-foreground">
-          I build software that gets
-          <br className="hidden sm:block" /> out of your way.
-        </h2>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a href="#contact" className="btn-ink">
-            <Mail className="w-4 h-4" /> Contact me
-          </a>
-          <a
-            href="#projects"
-            className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Selected works
-            <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-          </a>
-        </div>
-      </motion.div>
+        I build software that gets out of your way.
+      </motion.p>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.25 }}
-        className="mt-16 md:mt-20 sheet p-6 md:p-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left"
+        transition={{ delay: 1 }}
+        className="mt-12 flex flex-wrap items-center gap-8"
       >
-        {facts.map((f) => (
-          <div key={f.k}>
-            <p className="font-hand text-lg text-muted-foreground">{f.k}</p>
-            <p className="text-sm font-medium text-foreground/85">{f.v}</p>
-          </div>
-        ))}
-        <div className="sm:col-span-3 flex flex-wrap gap-2 pt-2 border-t border-border mt-2">
-          {stack.map((s) => (
-            <span key={s} className="chip">
-              {s}
-            </span>
-          ))}
-        </div>
+        <Magnetic>
+          <a href="#works" className="btn-champagne">Explore Selected Works <ArrowUpRight className="w-4 h-4" /></a>
+        </Magnetic>
+        <a href="#contact" className="meta text-muted-foreground hover:text-foreground border-b border-border pb-1">
+          Initiate Contact
+        </a>
       </motion.div>
-    </section>
-  );
-};
+    </div>
+    <div className="edition flex justify-between items-end pb-8 gap-4">
+      <p className="meta text-primary">Proven scale: 50,000+ nationwide students</p>
+      <p className="meta text-muted-foreground hidden sm:inline-flex items-center gap-2">
+        Scroll to enter atelier <ArrowDown className="w-3.5 h-3.5" />
+      </p>
+    </div>
+  </section>
+);
 
 export default Hero;
