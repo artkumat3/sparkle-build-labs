@@ -1,40 +1,99 @@
-import SectionHead from "@/components/atelier/SectionHead";
+import { motion } from "framer-motion";
+import { Code2, Database, Bot, Cloud } from "lucide-react";
 
-const matrix = [
-  { k: "Geographic Base", v: "Mau, Uttar Pradesh (IST / UTC+5:30)" },
-  { k: "Execution Cycle", v: "Concept to Production in Days" },
-  { k: "Reliability Standard", v: "99.9% Uptime with Row-Level Security" },
+const skillGroups = [
+  { icon: Code2, label: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
+  { icon: Database, label: "Backend", items: ["Python", "FastAPI", "Supabase", "Postgres"] },
+  { icon: Bot, label: "AI", items: ["OpenAI", "LangChain", "pgvector", "OCR"] },
+  { icon: Cloud, label: "Infra", items: ["Vercel", "Docker", "Edge Fns", "Resend"] },
 ];
 
-const About = () => (
-  <section id="about" className="edition py-28 md:py-40 scroll-mt-16">
-    <SectionHead no="02" label="The Editorial Prologue" title="Distance from reality is the real bug." />
-    <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-      <blockquote className="lg:col-span-6 font-serif italic font-light text-2xl md:text-3xl leading-snug text-foreground/90 border-l border-primary pl-6">
-        “Most software fails not in its algorithms, but in its distance from reality. I build where the register sits,
-        where the WhatsApp chat breaks, and where the human needs an answer in milliseconds.”
-      </blockquote>
-      <div className="lg:col-span-6 space-y-6 text-muted-foreground">
-        <p>
-          I work from Mau, Uttar Pradesh, building digital systems for clinics, regional businesses and early startups.
-          Every project begins on the ground — studying the physical ledger, the messy chat thread, the manual bottleneck
-          that quietly eats hours every day.
-        </p>
-        <p>
-          Then I ship the minimal viable slice straight to production, in days rather than quarters. AI is functional
-          plumbing inside the system — never the marketing pitch.
-        </p>
-      </div>
-    </div>
-    <dl className="mt-20 grid md:grid-cols-3 border-t border-border">
-      {matrix.map((m) => (
-        <div key={m.k} className="py-8 md:pr-8 border-b md:border-b-0 md:border-r last:border-r-0 border-border md:pl-8 first:md:pl-0">
-          <dt className="meta text-primary mb-3">{m.k}</dt>
-          <dd className="text-foreground">{m.v}</dd>
+const About = () => {
+  return (
+    <section id="about" className="py-24 md:py-32 relative">
+      <div className="container mx-auto px-6 lg:px-12">
+        <motion.div
+          className="mb-12 max-w-3xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-xs font-medium text-primary uppercase tracking-[0.25em] mb-5">About</h2>
+          <p className="font-display text-3xl md:text-5xl font-bold leading-tight tracking-tight">
+            I ship full-stack apps and{" "}
+            <span className="text-gradient">AI automations</span> that remove the boring work.
+          </p>
+        </motion.div>
+
+        {/* Bento */}
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 md:gap-5 auto-rows-[minmax(100px,auto)]">
+          {/* Story */}
+          <motion.div
+            className="bento col-span-1 md:col-span-6 lg:col-span-7 lg:row-span-2 p-8 md:p-10 space-y-5"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Story</p>
+            <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
+              I'm a full-stack developer based in Mau, Uttar Pradesh. I build production web apps and AI-powered automations for small businesses, clinics, and early-stage startups — the kind of work that replaces spreadsheets, paper registers, and copy-paste workflows.
+            </p>
+          </motion.div>
+
+          {/* Location + Status stacked */}
+          <motion.div
+            className="bento col-span-1 md:col-span-3 lg:col-span-5 p-8 flex flex-col justify-between min-h-[180px]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Currently</p>
+            <p className="font-display text-2xl md:text-3xl font-semibold leading-snug">
+              Open to <span className="text-primary">internships</span>, contract work, and full-time roles.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="bento col-span-1 md:col-span-3 lg:col-span-5 p-8 flex flex-col justify-between min-h-[180px]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Approach</p>
+            <p className="text-base md:text-lg text-foreground/85 leading-snug">
+              Ship the smallest thing that proves the idea — in production, in days. AI is a tool, not the pitch.
+            </p>
+          </motion.div>
+
+          {/* Skill quadrants */}
+          {skillGroups.map((g, i) => (
+            <motion.div
+              key={g.label}
+              className="bento col-span-1 md:col-span-3 lg:col-span-3 p-6 space-y-4 min-h-[160px]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.2 + i * 0.05 }}
+            >
+              <div className="flex items-center justify-between">
+                <g.icon className="w-5 h-5 text-primary" />
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground">{g.label}</span>
+              </div>
+              <ul className="space-y-1.5">
+                {g.items.map((item) => (
+                  <li key={item} className="text-sm text-foreground/80">{item}</li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
-      ))}
-    </dl>
-  </section>
-);
+      </div>
+    </section>
+  );
+};
 
 export default About;

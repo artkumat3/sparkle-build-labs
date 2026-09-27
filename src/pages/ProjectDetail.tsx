@@ -80,7 +80,7 @@ const ProjectDetail = () => {
       <main className="container mx-auto px-6 lg:px-12 pt-32 pb-24 max-w-4xl">
         <Link
           to="/#projects"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground/80 transition-colors mb-10"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-10"
         >
           <ArrowLeft className="w-4 h-4" /> Back to projects
         </Link>
@@ -101,7 +101,7 @@ const ProjectDetail = () => {
             <p className="text-muted-foreground mb-6">
               The project you're looking for doesn't exist or has been removed.
             </p>
-            <Link to="/#projects" className="text-foreground/80 hover:underline">
+            <Link to="/#projects" className="text-primary hover:underline">
               Browse all projects
             </Link>
           </div>
@@ -121,7 +121,7 @@ const ProjectDetail = () => {
 };
 
 const SectionHeading = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-xs font-medium text-foreground/80 uppercase tracking-widest mb-4">
+  <h2 className="text-xs font-medium text-primary uppercase tracking-widest mb-4">
     {children}
   </h2>
 );
@@ -198,7 +198,7 @@ const CaseStudyView = ({
       <div className="grid sm:grid-cols-2 gap-px bg-border/50 border border-border/50 rounded-2xl overflow-hidden">
         {cs.stack.map((col) => (
           <div key={col.group} className="bg-background p-6 space-y-3">
-            <p className="text-xs font-medium text-foreground/80 uppercase tracking-widest">
+            <p className="text-xs font-medium text-primary uppercase tracking-widest">
               {col.group}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -224,7 +224,7 @@ const CaseStudyView = ({
             key={i}
             className="flex gap-4 text-base md:text-lg text-foreground/80 leading-relaxed"
           >
-            <span className="text-foreground/80 mt-1 select-none">→</span>
+            <span className="text-primary mt-1 select-none">→</span>
             <span>{point}</span>
           </li>
         ))}
@@ -289,7 +289,7 @@ const CaseStudyView = ({
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-foreground/80 hover:underline"
+              className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
             >
               {l.label} <ExternalLink className="w-3.5 h-3.5" />
             </a>

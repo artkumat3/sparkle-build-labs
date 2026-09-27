@@ -64,12 +64,10 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["'Inter Tight'", "system-ui", "sans-serif"],
-        display: ["'Syne'", "'Inter Tight'", "sans-serif"],
-        serif: ["'Playfair Display'", "Georgia", "serif"],
-        mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
-        hand: ["'Playfair Display'", "serif"],
-        blocky: ["'Syne'", "sans-serif"],
+        sans: ["'IBM Plex Sans'", "system-ui", "sans-serif"],
+        display: ["'Libre Baskerville'", "ui-serif", "Georgia", "serif"],
+        serif: ["'Libre Baskerville'", "ui-serif", "Georgia", "serif"],
+        mono: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
       },
       keyframes: {
         "accordion-down": {

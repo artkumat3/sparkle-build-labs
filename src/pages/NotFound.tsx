@@ -44,7 +44,7 @@ const NotFound = () => {
             </h1>
             <p className="font-display text-2xl md:text-4xl font-bold tracking-tight leading-tight mb-4">
               This page took a{" "}
-              <span className="font-italic-display font-normal text-foreground/80">detour</span>.
+              <span className="font-italic-display font-normal text-primary">detour</span>.
             </p>
             <p className="text-sm md:text-base text-muted-foreground mb-2">
               The path{" "}
@@ -61,7 +61,7 @@ const NotFound = () => {
               <Link to="/">
                 <Button
                   size="lg"
-                  className="bg-primary text-foreground/80-foreground hover:bg-primary/90 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.5)]"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-11 px-6 text-xs uppercase tracking-[0.2em] font-semibold shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.5)]"
                 >
                   <Home className="mr-2 w-4 h-4" /> Home
                 </Button>
@@ -88,7 +88,7 @@ const NotFound = () => {
 
             <button
               onClick={() => window.history.back()}
-              className="mt-8 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground/80 transition-colors"
+              className="mt-8 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Go back
             </button>
